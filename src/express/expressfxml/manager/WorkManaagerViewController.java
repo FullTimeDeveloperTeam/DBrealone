@@ -9,9 +9,12 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+
+import javax.swing.*;
+import java.awt.*;
 import java.io.IOException;
 
-public class WorkManaagerViewController {
+public class WorkManaagerViewController extends Component {
     @FXML
     Button confirm,back,correct;
 
@@ -32,6 +35,7 @@ public class WorkManaagerViewController {
     public void confirmBtn(ActionEvent event) throws IOException {
         Stage primaryStage = new Stage();
         try{
+            JOptionPane.showMessageDialog(this, "กรอกข้อมูลเสร็จสิ้น","บันทึก", 1 );
             ((Node)event.getSource()).getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             Pane root = (Pane)loader.load(this.getClass().getResource("../manager/HomeView.fxml").openStream());

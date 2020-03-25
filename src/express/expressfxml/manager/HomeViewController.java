@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class HomeViewController {
-    @FXML Button empTable,conclude;
+    @FXML Button empTable,conclude,logout;
 
     public void empTableBtn(ActionEvent event) throws IOException {
         Stage primaryStage = new Stage();
@@ -34,6 +34,20 @@ public class HomeViewController {
             ((Node)event.getSource()).getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             Pane root = (Pane)loader.load(this.getClass().getResource("../manager/SumarizeView.fxml").openStream());
+            Scene scene = new Scene(root);
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        }catch ( IOException var6){
+            var6.printStackTrace();
+        }
+    }
+
+    public void logoutBtn(ActionEvent event) throws IOException {
+        Stage primaryStage = new Stage();
+        try{
+            ((Node)event.getSource()).getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            Pane root = (Pane)loader.load(this.getClass().getResource("../manager/LoginManagerView.fxml").openStream());
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
             primaryStage.show();

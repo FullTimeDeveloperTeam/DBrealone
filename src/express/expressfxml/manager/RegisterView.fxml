@@ -5,14 +5,13 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="express.expressfxml.manager.RegisterViewController">
    <children>
       <TextField layoutX="233.0" layoutY="113.0" promptText="Password" />
       <TextField layoutX="233.0" layoutY="78.0" promptText="Username" />
       <TextField layoutX="233.0" layoutY="187.0" promptText="lastname" />
       <TextField layoutX="233.0" layoutY="151.0" promptText="firstname" />
-      <Button layoutX="93.0" layoutY="313.0" mnemonicParsing="false" text="Back" />
+      <Button fx:id="back" layoutX="93.0" layoutY="313.0" mnemonicParsing="false" onAction="#backBtn" text="Back" />
       <Button layoutX="197.0" layoutY="326.0" mnemonicParsing="false" text="Confirm" />
       <Button layoutX="437.0" layoutY="313.0" mnemonicParsing="false" text="Clear" />
       <TextField layoutX="233.0" layoutY="227.0" promptText="Phone" />

@@ -1,4 +1,4 @@
-package express.expressfxml;
+package express.expressfxml.manager;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,16 +11,15 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class LoginViewController {
-    @FXML
-    Button backBtn,confirmBtn;
+public class HomeViewController {
+    @FXML Button empTable,conclude;
 
-    public void backBtn(ActionEvent event) throws IOException {
+    public void empTableBtn(ActionEvent event) throws IOException {
         Stage primaryStage = new Stage();
         try{
             ((Node)event.getSource()).getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
-            Pane root = (Pane)loader.load(this.getClass().getResource("../expressfxml/FirstView.fxml").openStream());
+            Pane root = (Pane)loader.load(this.getClass().getResource("../manager/WorkManagerView.fxml").openStream());
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
             primaryStage.show();
@@ -29,12 +28,12 @@ public class LoginViewController {
         }
     }
 
-    public void confirmBtn(ActionEvent event) throws IOException {
+    public void concludeBtn(ActionEvent event) throws IOException {
         Stage primaryStage = new Stage();
         try{
             ((Node)event.getSource()).getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
-            Pane root = (Pane)loader.load(this.getClass().getResource("../expressfxml/NameView.fxml").openStream());
+            Pane root = (Pane)loader.load(this.getClass().getResource("../manager/SumarizeView.fxml").openStream());
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
             primaryStage.show();

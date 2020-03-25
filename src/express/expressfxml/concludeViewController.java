@@ -11,22 +11,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class WorkViewController {
-    @FXML Button okBtn, backBtn;
-
-    public void confirmBtn(ActionEvent event) throws IOException {
-        Stage primaryStage = new Stage();
-        try{
-            ((Node)event.getSource()).getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            Pane root = (Pane)loader.load(this.getClass().getResource("../expressfxml/NameView.fxml").openStream());
-            Scene scene = new Scene(root);
-            primaryStage.setScene(scene);
-            primaryStage.show();
-        }catch ( IOException var6){
-            var6.printStackTrace();
-        }
-    }
+public class concludeViewController {
+    @FXML
+    Button back;
 
     public void backBtn(ActionEvent event) throws IOException {
         Stage primaryStage = new Stage();

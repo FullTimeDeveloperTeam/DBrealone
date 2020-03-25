@@ -21,7 +21,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-        Parent root = FXMLLoader.load(getClass().getResource(""));
+        Parent root = FXMLLoader.load(getClass().getResource("show.fxml"));
         primaryStage.setTitle("Express");
         primaryStage.setScene(new Scene(root, 500, 400));
         primaryStage.show();

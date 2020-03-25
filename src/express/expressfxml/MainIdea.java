@@ -11,7 +11,7 @@ public class MainIdea extends Application {
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("FirstView.fxml"));
         primaryStage.setTitle("Express");
-        primaryStage.setScene(new Scene(root, 500, 400));
+        primaryStage.setScene(new Scene(root, 700, 500));
         primaryStage.show();
     }
 }

@@ -35,6 +35,9 @@ public class RegisterViewController {
     public static boolean isString(String str){
         return ((!str.equals("")))&&((str != null))&&(str.matches("^[a-zA-Z0-9]{3,20}$"));
     }
+    public static boolean isPassword(String str){
+        return ((!str.equals("")))&&((str != null))&&(str.matches("[a-zA-Z0-9]{1,10}$"));
+    }
 
     public static boolean isNummeric(String str){
         return ((!str.equals("")))&&((str != null))&&(str.matches("^[0-9]{10}$"));
@@ -67,7 +70,7 @@ public class RegisterViewController {
         checkTextName=isString(fname.getText());
         checkTextLastName=isString(lname.getText());
         checkNum=isNummeric(phone.getText());
-        checkPassword=isNummeric(password.getText());
+        checkPassword=isPassword(password.getText());
         System.out.println(checkNum);
         try {
             con = ConnectDb.connectDB();

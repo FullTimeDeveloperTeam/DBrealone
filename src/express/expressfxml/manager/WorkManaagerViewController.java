@@ -29,39 +29,93 @@ public class WorkManaagerViewController extends Component {
     private ResultSet rs = null;
     private PreparedStatement pst = null;
     @FXML
-    Button confirm, back, finish;
+    Button insert, back, finish;
     @FXML
     TextField name, id;
     @FXML
     ComboBox duty, box, time;
     @FXML
-    TableView tableemp;
+    TableView<DetailEmployee> tableemp;
     @FXML
-    TableColumn tableemp_id, tableemp_name, tableemp_duty, tableemp_box, tableemp_time;
+    TableColumn<DetailEmployee,String> tableemp_id;
+    @FXML TableColumn<DetailEmployee,String>
+    tableemp_name, tableemp_duty, tableemp_box, tableemp_time;
+
+
     ObservableList<String> listemp = FXCollections.observableArrayList();
+
     ObservableList<DetailEmployee> observableList = FXCollections.observableArrayList();
 
 
-    public void intitialize() {
-        show();
-
+    public void initialize() {
+        showTable();
+        showemp_dutyToCombo();
+        showemp_boxToCombo();
+        showemp_timeToCombo();
+        duty.setItems(listempduty);
+        box.setItems(listempbox);
+        time.setItems(listemp);
     }
 
-    public void showempToCombo() {
+    ObservableList<String> listempduty = FXCollections.observableArrayList();
+
+    public void showemp_dutyToCombo() {
         try {
             con = ConnectDb.connectDB();
-            String sql = "SELECT * FROM employee";
-            pst = con.prepareStatement(sql); 
+            String sql = "SELECT emp_duty FROM employee";
+            pst = con.prepareStatement(sql);
+            rs = pst.executeQuery();
+            while (rs.next()){
+                listempduty.add(rs.getString("emp_duty"));
+               // listemp.add(rs.getString("emp_box"));
+                //listemp.add(rs.getString("emp_time"));
+                System.out.println("show COMBO DUTY");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    ObservableList<String> listempbox = FXCollections.observableArrayList();
+
+    public void showemp_boxToCombo() {
+        try {
+            con = ConnectDb.connectDB();
+            String sql = "SELECT emp_box FROM employee";
+            pst = con.prepareStatement(sql);
+            rs = pst.executeQuery();
+            while (rs.next()){
+                //listemp.add(rs.getString("emp_duty"));
+                listempbox.add(rs.getString("emp_box"));
+                //listemp.add(rs.getString("emp_time"));
+                System.out.println("show COMBO BOX");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public void showemp_timeToCombo() {
+        try {
+            con = ConnectDb.connectDB();
+            String sql = "SELECT emp_time    FROM employee";
+            pst = con.prepareStatement(sql);
+            rs = pst.executeQuery();
+            while (rs.next()){
+                //listemp.add(rs.getString("emp_duty"));
+                //listemp.add(rs.getString("emp_box"));
+                listemp.add(rs.getString("emp_time"));
+                System.out.println("show COMBO TIME");
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    public void show(ActionEvent event) {
+    public void showTable() {
         String sql = "SELECT * FROM employee";
         try {
             con = ConnectDb.connectDB();
             ResultSet rs = con.createStatement().executeQuery(sql);
+
             while (rs.next()) {
                 observableList.add(new DetailEmployee(rs.getString("emp_id"), rs.getString("emp_name"),
                         rs.getString("emp_duty"), rs.getString("emp_box"), rs.getString("emp_time")));
@@ -86,6 +140,25 @@ public class WorkManaagerViewController extends Component {
 
     }
 
+
+    public void insertBtn(ActionEvent event){
+        try{
+            String sql = "INSERT INTO employee(emp_id,emp_name) VALUES (?,?)";
+            con = ConnectDb.connectDB();
+            pst =con.prepareStatement(sql);
+            pst.setString(1,id.getText());
+            pst.setString(2,name.getText());
+            pst.execute();
+            System.out.println("INSERT CORRECT");
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("INSERT MAIDAI");
+        }
+        name.setText("");
+        id.setText("");
+    }
     public void backBtn(ActionEvent event) throws IOException {
         Stage primaryStage = new Stage();
         try {

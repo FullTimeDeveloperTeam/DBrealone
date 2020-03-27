@@ -31,15 +31,15 @@ public class WorkManaagerViewController extends Component {
     @FXML
     Button insert, back, finish;
     @FXML
-    TextField name, id;
-    @FXML
-    ComboBox duty, box, time;
+    TextField name, id,duty, box, time;
+    //@FXML
+     //;
     @FXML
     TableView<DetailEmployee> tableemp;
     @FXML
-    TableColumn<DetailEmployee,String> tableemp_id;
+    TableColumn<DetailEmployee,String> tableColumnemp_id;
     @FXML TableColumn<DetailEmployee,String>
-    tableemp_name, tableemp_duty, tableemp_box, tableemp_time;
+    tableColumnemp_name, tableColumnemp_duty, tableColumnemp_box, tableCoulumnemp_time;
 
 
     ObservableList<String> listemp = FXCollections.observableArrayList();
@@ -49,17 +49,17 @@ public class WorkManaagerViewController extends Component {
 
     public void initialize() {
         showTable();
-        showemp_dutyToCombo();
-        showemp_boxToCombo();
-        showemp_timeToCombo();
-        duty.setItems(listempduty);
-        box.setItems(listempbox);
-        time.setItems(listemp);
+       // showemp_dutyToCombo();
+       // showemp_boxToCombo();
+       // showemp_timeToCombo();
+       // duty.setItems(listempduty);
+        //box.setItems(listempbox);
+        //time.setItems(listemp);
     }
 
     ObservableList<String> listempduty = FXCollections.observableArrayList();
 
-    public void showemp_dutyToCombo() {
+    /*public void showemp_dutyToCombo() {
         try {
             con = ConnectDb.connectDB();
             String sql = "SELECT emp_duty FROM employee";
@@ -74,10 +74,10 @@ public class WorkManaagerViewController extends Component {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    }
+    }*/
     ObservableList<String> listempbox = FXCollections.observableArrayList();
 
-    public void showemp_boxToCombo() {
+    /*public void showemp_boxToCombo() {
         try {
             con = ConnectDb.connectDB();
             String sql = "SELECT emp_box FROM employee";
@@ -92,8 +92,8 @@ public class WorkManaagerViewController extends Component {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    }
-    public void showemp_timeToCombo() {
+    }*/
+   /* public void showemp_timeToCombo() {
         try {
             con = ConnectDb.connectDB();
             String sql = "SELECT emp_time    FROM employee";
@@ -108,7 +108,7 @@ public class WorkManaagerViewController extends Component {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    }
+    }*/
 
     public void showTable() {
         String sql = "SELECT * FROM employee";
@@ -120,6 +120,10 @@ public class WorkManaagerViewController extends Component {
                 observableList.add(new DetailEmployee(rs.getString("emp_id"), rs.getString("emp_name"),
                         rs.getString("emp_duty"), rs.getString("emp_box"), rs.getString("emp_time")));
                 System.out.println("SHOW COMPLETE");
+                System.out.println(rs.getString("emp_id"));
+                System.out.println(rs.getString("emp_box"));
+                System.out.println(rs.getString("emp_time"));
+
             }
 
 
@@ -128,14 +132,15 @@ public class WorkManaagerViewController extends Component {
             System.out.println("SHOW FAIL");
         }
         System.out.println("\n");
-        tableemp_id.setCellValueFactory(new PropertyValueFactory<>("emp_id"));
-        tableemp_name.setCellValueFactory(new PropertyValueFactory<>("emp_name"));
-        tableemp_duty.setCellValueFactory(new PropertyValueFactory<>("emp_duty"));
-        tableemp_box.setCellValueFactory(new PropertyValueFactory<>("emp_box"));
-        tableemp_box.setCellValueFactory(new PropertyValueFactory<>("emp_time"));
+        tableColumnemp_id.setCellValueFactory(new PropertyValueFactory<>("emp_id"));
+        tableColumnemp_name.setCellValueFactory(new PropertyValueFactory<>("emp_name"));
+        tableColumnemp_duty.setCellValueFactory(new PropertyValueFactory<>("emp_duty"));
+        tableColumnemp_box.setCellValueFactory(new PropertyValueFactory<>("emp_box"));
+        tableCoulumnemp_time.setCellValueFactory(new PropertyValueFactory<>("emp_time"));
 
 
         tableemp.setItems(null);
+
         tableemp.setItems(observableList);
 
     }
@@ -143,11 +148,14 @@ public class WorkManaagerViewController extends Component {
 
     public void insertBtn(ActionEvent event){
         try{
-            String sql = "INSERT INTO employee(emp_id,emp_name) VALUES (?,?)";
+            String sql = "INSERT INTO employee(emp_id,emp_name,emp_duty,emp_box,emp_time) VALUES (?,?,?,?,?)";
             con = ConnectDb.connectDB();
             pst =con.prepareStatement(sql);
             pst.setString(1,id.getText());
             pst.setString(2,name.getText());
+            pst.setString(3,duty.getText());
+            pst.setString(4,box.getText());
+            pst.setString(5,time.getText());
             pst.execute();
             System.out.println("INSERT CORRECT");
 
@@ -158,6 +166,10 @@ public class WorkManaagerViewController extends Component {
         }
         name.setText("");
         id.setText("");
+        duty.setText("");
+        box.setText("");
+        time.setText("");
+        showTable();
     }
     public void backBtn(ActionEvent event) throws IOException {
         Stage primaryStage = new Stage();

@@ -31,6 +31,6 @@
       <Label layoutX="18.0" layoutY="77.0" text="ID" />
       <TextField fx:id="duty" layoutX="41.0" layoutY="175.0" />
       <TextField fx:id="box" layoutX="41.0" layoutY="240.0" />
-      <TextField fx:id="time" layoutX="41.0" layoutY="275.0" />
+      <TextField fx:id="time" layoutX="43.0" layoutY="275.0" />
    </children>
 </AnchorPane>

@@ -41,7 +41,7 @@ public class WorkManaagerViewController extends Component {
     tableColumnemp_name, tableColumnemp_duty, tableColumnemp_box, tableCoulumnemp_time;
 
 
-    ObservableList<String> listemp = FXCollections.observableArrayList();
+    //ObservableList<String> listemp = FXCollections.observableArrayList();
 
     ObservableList<DetailEmployee> observableList = FXCollections.observableArrayList();
 

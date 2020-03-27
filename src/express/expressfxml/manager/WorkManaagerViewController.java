@@ -32,8 +32,7 @@ public class WorkManaagerViewController extends Component {
     Button insert, back, finish;
     @FXML
     TextField name, id,duty, box, time;
-    //@FXML
-     //;
+
     @FXML
     TableView<DetailEmployee> tableemp;
     @FXML
@@ -115,28 +114,30 @@ public class WorkManaagerViewController extends Component {
         try {
             con = ConnectDb.connectDB();
             ResultSet rs = con.createStatement().executeQuery(sql);
-
             while (rs.next()) {
                 observableList.add(new DetailEmployee(rs.getString("emp_id"), rs.getString("emp_name"),
                         rs.getString("emp_duty"), rs.getString("emp_box"), rs.getString("emp_time")));
                 System.out.println("SHOW COMPLETE");
-                System.out.println(rs.getString("emp_id"));
-                System.out.println(rs.getString("emp_box"));
-                System.out.println(rs.getString("emp_time"));
-
+//                System.out.println(rs.getString("emp_id"));
+//                System.out.println(rs.getString("emp_box"));
+//                System.out.println(rs.getString("emp_time"));
+                String id = rs.getString("emp_id");
+                String name = rs.getString("emp_name");
+                String duty = rs.getString("emp_duty");
+                String box = rs.getString("emp_box");
+                String times = rs.getString("emp_time");
             }
-
-
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("SHOW FAIL");
         }
         System.out.println("\n");
-        tableColumnemp_id.setCellValueFactory(new PropertyValueFactory<>("emp_id"));
-        tableColumnemp_name.setCellValueFactory(new PropertyValueFactory<>("emp_name"));
-        tableColumnemp_duty.setCellValueFactory(new PropertyValueFactory<>("emp_duty"));
-        tableColumnemp_box.setCellValueFactory(new PropertyValueFactory<>("emp_box"));
-        tableCoulumnemp_time.setCellValueFactory(new PropertyValueFactory<>("emp_time"));
+
+        tableColumnemp_id.setCellValueFactory(new PropertyValueFactory<>("id"));
+        tableColumnemp_name.setCellValueFactory(new PropertyValueFactory<>("name"));
+        tableColumnemp_duty.setCellValueFactory(new PropertyValueFactory<>("duty"));
+        tableColumnemp_box.setCellValueFactory(new PropertyValueFactory<>("box"));
+        tableCoulumnemp_time.setCellValueFactory(new PropertyValueFactory<>("time"));
 
 
         tableemp.setItems(null);

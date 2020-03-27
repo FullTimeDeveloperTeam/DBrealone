@@ -20,7 +20,7 @@ public class NameViewController {
         try{
             ((Node)event.getSource()).getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
-            Pane root = (Pane)loader.load(this.getClass().getResource("../expressfxml/WorkView.fxml").openStream());
+            Pane root = (Pane)loader.load(this.getClass().getResource("../expressfxml/WorkSelectView.fxml").openStream());
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
             primaryStage.show();

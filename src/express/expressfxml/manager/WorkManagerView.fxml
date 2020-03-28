@@ -19,7 +19,7 @@
           <TableColumn fx:id="tableColumnemp_name" prefWidth="75.0" text="ชื่อ" />
             <TableColumn fx:id="tableColumnemp_duty" prefWidth="75.0" text="เวร" />
             <TableColumn fx:id="tableColumnemp_box" prefWidth="75.0" text="ตู้" />
-            <TableColumn fx:id="tableCoulumnemp_time" prefWidth="75.0" text="วันที่" />
+            <TableColumn fx:id="tableCoulumnemp_date" prefWidth="75.0" text="วันที่" />
         </columns>
       </TableView>
       <Button fx:id="back" layoutX="182.0" layoutY="320.0" mnemonicParsing="false" onAction="#backBtn" text="back" />
@@ -31,6 +31,6 @@
       <Label layoutX="18.0" layoutY="77.0" text="ID" />
       <TextField fx:id="duty" layoutX="41.0" layoutY="175.0" />
       <TextField fx:id="box" layoutX="41.0" layoutY="240.0" />
-      <TextField fx:id="time" layoutX="43.0" layoutY="275.0" />
+      <TextField fx:id="date" layoutX="43.0" layoutY="275.0" />
    </children>
 </AnchorPane>

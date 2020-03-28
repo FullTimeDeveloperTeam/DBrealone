@@ -55,8 +55,8 @@ public class WorkSelectController {
             //value.compareTo(rs.getString("emp_time"));
             //value1.compareTo(rs.getString("emp_box"));
             checkbox = true;
-            //value.equals(rs.getString("emp_time"));
-            //value1.equals(rs.getString("emp_box"));
+            value.equals(rs.getString("emp_time"));
+            value1.equals(rs.getString("emp_box"));
             //getItems().equals(rs.getString("emp_box"));
             System.out.println("CORRECT");
             System.out.println(sql);

@@ -7,5 +7,11 @@
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://192.168.0.104:3306/toofast</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="@localhost" uuid="c4ab60c0-d27d-404b-8deb-371cd146e240">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/express manager</jdbc-url>
+    </data-source>
   </component>
 </project>

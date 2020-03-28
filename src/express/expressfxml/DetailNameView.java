@@ -1,23 +1,6 @@
 package express.expressfxml;
 
-public class DetailEmployee {
-
-    public DetailEmployee(String string, String emp_name, String emp_duty, String emp_box, String id) {
-        this.id = id;
-        this.name = name;
-        this.duty = duty;
-        this.box = box;
-        this.date = date;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
+public class DetailNameView {
     public String getName() {
         return name;
     }
@@ -50,6 +33,12 @@ public class DetailEmployee {
         this.date = date;
     }
 
-    String id,name,duty,box,date;
+    String name,duty,box,date;
 
+    public DetailNameView(String name, String duty, String box, String date) {
+        this.name = name;
+        this.duty = duty;
+        this.box = box;
+        this.date = date;
+    }
 }

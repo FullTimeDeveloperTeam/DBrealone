@@ -31,14 +31,20 @@ public class WorkManaagerViewController extends Component {
     @FXML
     Button insert, back, finish;
     @FXML
-    TextField name, id,duty, box, time;
+    TextField name, id,duty, box, date;
 
     @FXML
     TableView<DetailEmployee> tableemp;
     @FXML
     TableColumn<DetailEmployee,String> tableColumnemp_id;
     @FXML TableColumn<DetailEmployee,String>
-    tableColumnemp_name, tableColumnemp_duty, tableColumnemp_box, tableCoulumnemp_time;
+    tableColumnemp_name;
+    @FXML TableColumn<DetailEmployee,String>
+    tableColumnemp_duty;
+    @FXML TableColumn<DetailEmployee,String>
+    tableColumnemp_box;
+    @FXML TableColumn<DetailEmployee,String>
+    tableCoulumnemp_date;
 
 
     //ObservableList<String> listemp = FXCollections.observableArrayList();
@@ -46,7 +52,7 @@ public class WorkManaagerViewController extends Component {
     ObservableList<DetailEmployee> observableList = FXCollections.observableArrayList();
 
 
-    public void initialize() {
+    public void initialize() throws SQLException {
         showTable();
        // showemp_dutyToCombo();
        // showemp_boxToCombo();
@@ -109,14 +115,15 @@ public class WorkManaagerViewController extends Component {
         }
     }*/
 
-    public void showTable() {
+    public void showTable() throws SQLException {
         String sql = "SELECT * FROM employee";
         try {
             con = ConnectDb.connectDB();
             ResultSet rs = con.createStatement().executeQuery(sql);
             while (rs.next()) {
-                observableList.add(new DetailEmployee(rs.getString("emp_id"), rs.getString("emp_name"),
-                        rs.getString("emp_duty"), rs.getString("emp_box"), rs.getString("emp_time")));
+                observableList.add(new DetailEmployee(rs.getString("emp_id"), rs.getString("emp_name"), rs.getString("emp_duty")
+                        , rs.getString("emp_box"), rs.getString("emp_date")
+                ));
                 System.out.println("SHOW COMPLETE");
 //                System.out.println(rs.getString("emp_id"));
 //                System.out.println(rs.getString("emp_box"));
@@ -125,7 +132,7 @@ public class WorkManaagerViewController extends Component {
                 String name = rs.getString("emp_name");
                 String duty = rs.getString("emp_duty");
                 String box = rs.getString("emp_box");
-                String times = rs.getString("emp_time");
+                String date = rs.getString("emp_date");
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -137,7 +144,7 @@ public class WorkManaagerViewController extends Component {
         tableColumnemp_name.setCellValueFactory(new PropertyValueFactory<>("name"));
         tableColumnemp_duty.setCellValueFactory(new PropertyValueFactory<>("duty"));
         tableColumnemp_box.setCellValueFactory(new PropertyValueFactory<>("box"));
-        tableCoulumnemp_time.setCellValueFactory(new PropertyValueFactory<>("time"));
+        tableCoulumnemp_date.setCellValueFactory(new PropertyValueFactory<>("date"));
 
 
         tableemp.setItems(null);
@@ -147,7 +154,7 @@ public class WorkManaagerViewController extends Component {
     }
 
 
-    public void insertBtn(ActionEvent event){
+    public void insertBtn(ActionEvent event) throws SQLException {
         try{
             String sql = "INSERT INTO employee(emp_id,emp_name,emp_duty,emp_box,emp_time) VALUES (?,?,?,?,?)";
             con = ConnectDb.connectDB();
@@ -156,7 +163,7 @@ public class WorkManaagerViewController extends Component {
             pst.setString(2,name.getText());
             pst.setString(3,duty.getText());
             pst.setString(4,box.getText());
-            pst.setString(5,time.getText());
+            pst.setString(5,date.getText());
             pst.execute();
             System.out.println("INSERT CORRECT");
 
@@ -169,7 +176,7 @@ public class WorkManaagerViewController extends Component {
         id.setText("");
         duty.setText("");
         box.setText("");
-        time.setText("");
+        date.setText("");
         showTable();
     }
     public void backBtn(ActionEvent event) throws IOException {

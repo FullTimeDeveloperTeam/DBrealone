@@ -7,12 +7,12 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="express.expressfxml.NameViewController">
    <children>
-      <TableView layoutX="134.0" layoutY="70.0" prefHeight="200.0" prefWidth="301.0">
+      <TableView fx:id="tableemp" layoutX="134.0" layoutY="70.0" prefHeight="200.0" prefWidth="301.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="ชื่อ" />
-          <TableColumn prefWidth="75.0" text="เวร" />
-            <TableColumn prefWidth="75.0" text="ตู้" />
-            <TableColumn prefWidth="75.0" text="วันที่" />
+          <TableColumn fx:id="tableColumnName" prefWidth="75.0" text="ชื่อ" />
+          <TableColumn fx:id="tableColumnDuty" prefWidth="75.0" text="เวร" />
+            <TableColumn fx:id="tableColumnBox" prefWidth="75.0" text="ตู้" />
+            <TableColumn fx:id="tableColumnDate" prefWidth="75.0" text="วันที่" />
         </columns>
       </TableView>
       <Button fx:id="workBtn" layoutX="108.0" layoutY="283.0" mnemonicParsing="false" onAction="#workBtn" text="เข้าสู่การทำงาน" />

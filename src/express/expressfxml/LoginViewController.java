@@ -65,7 +65,10 @@ public class LoginViewController extends Component {
                 if (checkLogin == 1) {
                     ((Node) event.getSource()).getScene().getWindow().hide();
                     FXMLLoader loader = new FXMLLoader();
+                    String idToname = idemp.getText();
                     Pane root = (Pane) loader.load(this.getClass().getResource("../expressfxml/NameView.fxml").openStream());
+                    NameViewController nameViewController =loader.getController();
+                    nameViewController.showId(idToname);
                     Scene scene = new Scene(root);
                     primaryStage.setScene(scene);
                     primaryStage.show();

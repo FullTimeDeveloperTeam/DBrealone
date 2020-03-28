@@ -151,7 +151,7 @@ public class WorkManaagerViewController extends Component {
     public void insertBtn(ActionEvent event) throws SQLException {
         try{
             clearChoice();
-            idCombo.getItems().clear();
+            //idCombo.getItems().clear();
             String sql = "INSERT INTO employee  VALUES (?,?,null,null,null )";
             con = ConnectDb.connectDB();
             pst =con.prepareStatement(sql);

@@ -33,14 +33,14 @@ public class RegisterViewController {
     private int checkRepeat=0;
 
     public static boolean isString(String str){
-        return ((!str.equals("")))&&((str != null))&&(str.matches("^[a-zA-Z0-9]{3,20}$"));
+        return ((!str.equals("")))&&((str != null))&&(str.matches("^[a-zA-Z0-9]{3,20}$"));//เป็น a-z ตัวเล็กใหญ่ได้หมดผสมตัวเลขได้ ตั้งแต่3-20ตัว
     }
     public static boolean isPassword(String str){
-        return ((!str.equals("")))&&((str != null))&&(str.matches("[a-zA-Z0-9]{1,10}$"));
+        return ((!str.equals("")))&&((str != null))&&(str.matches("[a-zA-Z0-9]{1,10}$"));//เป็น a-z ตัวเล็กใหญ่ได้หมดผสมตัวเลขได้ ตั้งแต่1-10ตัว
     }
 
     public static boolean isNummeric(String str){
-        return ((!str.equals("")))&&((str != null))&&(str.matches("^[0-9]{10}$"));
+        return ((!str.equals("")))&&((str != null))&&(str.matches("^[0-9]{10}$"));//ต้องเป้น ตัวเลจ 10 ตัว
     }
 
     public void clear(){

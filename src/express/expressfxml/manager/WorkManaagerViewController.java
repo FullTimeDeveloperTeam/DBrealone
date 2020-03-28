@@ -28,23 +28,25 @@ public class WorkManaagerViewController extends Component {
     private Connection con = null;
     private ResultSet rs = null;
     private PreparedStatement pst = null;
+    String e_id ="";
     @FXML
     Button insert, back, finish;
     @FXML
-    TextField name, id,duty, box, date;
+    TextField nameText, idText,dutyText, boxText, dateText;
 
-    @FXML
-    TableView<DetailEmployee> tableemp;
-    @FXML
-    TableColumn<DetailEmployee,String> tableColumnemp_id;
-    @FXML TableColumn<DetailEmployee,String>
-    tableColumnemp_name;
-    @FXML TableColumn<DetailEmployee,String>
-    tableColumnemp_duty;
-    @FXML TableColumn<DetailEmployee,String>
-    tableColumnemp_box;
-    @FXML TableColumn<DetailEmployee,String>
-    tableCoulumnemp_date;
+    @FXML TableView<DetailEmployee> tableEmp;
+    @FXML TableColumn<DetailEmployee,String> tableColEmp_id;
+    @FXML TableColumn<DetailEmployee,String> tableColEmp_name;
+    @FXML TableColumn<DetailEmployee,String> tableColEmp_duty;
+    @FXML TableColumn<DetailEmployee,String> tableColEmp_box;
+    @FXML TableColumn<DetailEmployee,String> tableColEmp_date;
+
+//    @FXML TableView<DetailEmployee> tableemp;
+//    @FXML TableColumn<DetailEmployee,String> tableColumnemp_id;
+//    @FXML TableColumn<DetailEmployee,String> tableColumnemp_name;
+//    @FXML TableColumn<DetailEmployee,String> tableColumnemp_duty;
+//    @FXML TableColumn<DetailEmployee,String> tableColumnemp_box;
+//    @FXML TableColumn<DetailEmployee,String> tableCoulumnemp_date;
 
 
     //ObservableList<String> listemp = FXCollections.observableArrayList();
@@ -116,54 +118,42 @@ public class WorkManaagerViewController extends Component {
     }*/
 
     public void showTable() throws SQLException {
-        String sql = "SELECT * FROM employee";
         try {
             con = ConnectDb.connectDB();
-            ResultSet rs = con.createStatement().executeQuery(sql);
+            ResultSet rs = con.createStatement().executeQuery("SELECT * FROM employee");
             while (rs.next()) {
                 observableList.add(new DetailEmployee(rs.getString("emp_id"), rs.getString("emp_name"), rs.getString("emp_duty")
                         , rs.getString("emp_box"), rs.getString("emp_date")
                 ));
                 System.out.println("SHOW COMPLETE");
-//                System.out.println(rs.getString("emp_id"));
-//                System.out.println(rs.getString("emp_box"));
-//                System.out.println(rs.getString("emp_time"));
-                String id = rs.getString("emp_id");
-                String name = rs.getString("emp_name");
-                String duty = rs.getString("emp_duty");
-                String box = rs.getString("emp_box");
-                String date = rs.getString("emp_date");
             }
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("SHOW FAIL");
         }
-        System.out.println("\n");
 
-        tableColumnemp_id.setCellValueFactory(new PropertyValueFactory<>("id"));
-        tableColumnemp_name.setCellValueFactory(new PropertyValueFactory<>("name"));
-        tableColumnemp_duty.setCellValueFactory(new PropertyValueFactory<>("duty"));
-        tableColumnemp_box.setCellValueFactory(new PropertyValueFactory<>("box"));
-        tableCoulumnemp_date.setCellValueFactory(new PropertyValueFactory<>("date"));
+        tableColEmp_id.setCellValueFactory(new PropertyValueFactory<>("id"));
+        tableColEmp_name.setCellValueFactory(new PropertyValueFactory<>("name"));
+        tableColEmp_duty.setCellValueFactory(new PropertyValueFactory<>("duty"));
+        tableColEmp_box.setCellValueFactory(new PropertyValueFactory<>("box"));
+        tableColEmp_date.setCellValueFactory(new PropertyValueFactory<>("date"));
 
-
-        tableemp.setItems(null);
-
-        tableemp.setItems(observableList);
+        tableEmp.setItems(null);
+        tableEmp.setItems(observableList);
 
     }
 
 
     public void insertBtn(ActionEvent event) throws SQLException {
         try{
-            String sql = "INSERT INTO employee(emp_id,emp_name,emp_duty,emp_box,emp_time) VALUES (?,?,?,?,?)";
+            String sql = "INSERT INTO employee(emp_id,emp_name,emp_duty,emp_box,emp_date) VALUES (?,?,?,?,?)";
             con = ConnectDb.connectDB();
             pst =con.prepareStatement(sql);
-            pst.setString(1,id.getText());
-            pst.setString(2,name.getText());
-            pst.setString(3,duty.getText());
-            pst.setString(4,box.getText());
-            pst.setString(5,date.getText());
+            pst.setString(1,idText.getText());
+            pst.setString(2,nameText.getText());
+            pst.setString(3,dutyText.getText());
+            pst.setString(4,boxText.getText());
+            pst.setString(5,dateText.getText());
             pst.execute();
             System.out.println("INSERT CORRECT");
 
@@ -172,11 +162,11 @@ public class WorkManaagerViewController extends Component {
             e.printStackTrace();
             System.out.println("INSERT MAIDAI");
         }
-        name.setText("");
-        id.setText("");
-        duty.setText("");
-        box.setText("");
-        date.setText("");
+        nameText.setText("");
+        idText.setText("");
+        dutyText.setText("");
+        boxText.setText("");
+        dateText.setText("");
         showTable();
     }
     public void backBtn(ActionEvent event) throws IOException {

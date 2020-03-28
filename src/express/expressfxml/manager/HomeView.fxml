@@ -5,8 +5,8 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="express.expressfxml.manager.HomeViewController">
    <children>
-      <Button fx:id="empTable" layoutX="274.0" layoutY="118.0" mnemonicParsing="false" onAction="#empTableBtn" text="จัดตารางพนักงาน" />
-      <Button fx:id="conclude" layoutX="274.0" layoutY="230.0" mnemonicParsing="false" onAction="#concludeBtn" text="เรียกดูตารางสรุป" />
+      <Button fx:id="empTable" layoutX="203.0" layoutY="141.0" mnemonicParsing="false" onAction="#empTableBtn" text="work manage employee schedule" />
+      <Button fx:id="conclude" layoutX="254.0" layoutY="224.0" mnemonicParsing="false" onAction="#concludeBtn" text="เรียกดูตารางสรุป" />
       <Button fx:id="logout" layoutX="524.0" layoutY="348.0" mnemonicParsing="false" onAction="#logoutBtn" text="Logout" />
    </children>
 </AnchorPane>

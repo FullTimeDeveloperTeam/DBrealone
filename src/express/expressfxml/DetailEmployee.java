@@ -1,13 +1,18 @@
 package express.expressfxml;
 
+
 public class DetailEmployee {
 
-    public DetailEmployee(String string, String emp_name, String emp_duty, String emp_box, String id) {
+    public DetailEmployee(String id, String name, String duty, String box, String date) {
         this.id = id;
         this.name = name;
         this.duty = duty;
         this.box = box;
         this.date = date;
+    }
+
+    public DetailEmployee(){
+
     }
 
     public String getId() {

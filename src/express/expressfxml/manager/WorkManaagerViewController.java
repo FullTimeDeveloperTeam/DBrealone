@@ -150,15 +150,16 @@ public class WorkManaagerViewController extends Component {
     //ยัง insert ไม่ได้
     public void insertBtn(ActionEvent event) throws SQLException {
         try{
-            String sql = "INSERT INTO employee VALUES (?,?,?,?,?)";
+            clearChoice();
+            idCombo.getItems().clear();
+            String sql = "INSERT INTO employee  VALUES (?,?,null,null,null )";
             con = ConnectDb.connectDB();
             pst =con.prepareStatement(sql);
             pst.setString(1,idText.getText());
-            pst.setString(1,nameText.getText());
-            pst.setString(2,dutyChoice.getValue().toString());
-            pst.setString(3,boxChoice.getValue().toString());
-            pst.setString(4,dateChoice.getValue().toString());
+            pst.setString(2,nameText.getText());
+
             pst.execute();
+            clearChoice();
             System.out.println("INSERT CORRECT");
         } catch (Exception e) {
             e.printStackTrace();
@@ -166,8 +167,10 @@ public class WorkManaagerViewController extends Component {
         }
         nameText.setText("");
         idText.setText("");
+        idCombo.getItems().clear();
         clearTable();
         showTable();
+        showemp_nameToCombo();
     }
 
     public void backBtn(ActionEvent event) throws IOException {

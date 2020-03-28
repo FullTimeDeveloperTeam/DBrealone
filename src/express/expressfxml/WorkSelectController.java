@@ -38,6 +38,7 @@ public class WorkSelectController {
     public void initialize() {
         showemp_boxToCombo();
         boxCombo.setItems(observableList);
+        //boxCombo.setItems()
 
     }
 

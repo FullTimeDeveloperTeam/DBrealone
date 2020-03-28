@@ -28,11 +28,15 @@ public class WorkManaagerViewController extends Component {
     private Connection con = null;
     private ResultSet rs = null;
     private PreparedStatement pst = null;
-    String e_id ="";
     @FXML
     Button insert, back, finish;
     @FXML
-    TextField nameText, idText,dutyText, boxText, dateText;
+    TextField nameText, idText;
+
+    @FXML ComboBox idCombo;
+    @FXML ChoiceBox dutyChoice, boxChoice;
+    @FXML DatePicker dateChoice;
+
 
     @FXML TableView<DetailEmployee> tableEmp;
     @FXML TableColumn<DetailEmployee,String> tableColEmp_id;
@@ -41,81 +45,33 @@ public class WorkManaagerViewController extends Component {
     @FXML TableColumn<DetailEmployee,String> tableColEmp_box;
     @FXML TableColumn<DetailEmployee,String> tableColEmp_date;
 
-//    @FXML TableView<DetailEmployee> tableemp;
-//    @FXML TableColumn<DetailEmployee,String> tableColumnemp_id;
-//    @FXML TableColumn<DetailEmployee,String> tableColumnemp_name;
-//    @FXML TableColumn<DetailEmployee,String> tableColumnemp_duty;
-//    @FXML TableColumn<DetailEmployee,String> tableColumnemp_box;
-//    @FXML TableColumn<DetailEmployee,String> tableCoulumnemp_date;
-
-
-    //ObservableList<String> listemp = FXCollections.observableArrayList();
-
     ObservableList<DetailEmployee> observableList = FXCollections.observableArrayList();
-
 
     public void initialize() throws SQLException {
         showTable();
-       // showemp_dutyToCombo();
-       // showemp_boxToCombo();
-       // showemp_timeToCombo();
-       // duty.setItems(listempduty);
-        //box.setItems(listempbox);
-        //time.setItems(listemp);
+        showemp_nameToCombo();
+        showChoice();
     }
 
-    ObservableList<String> listempduty = FXCollections.observableArrayList();
+    public void showChoice(){
+        dutyChoice.getItems().add(0,"Morning");
+        dutyChoice.getItems().add(1,"Evening");
+        boxChoice.getItems().add(0,"1");
+        boxChoice.getItems().add(1,"2");
+    }
 
-    /*public void showemp_dutyToCombo() {
+    public void showemp_nameToCombo(){
         try {
             con = ConnectDb.connectDB();
-            String sql = "SELECT emp_duty FROM employee";
-            pst = con.prepareStatement(sql);
+            pst = con.prepareStatement("SELECT emp_id FROM employee");
             rs = pst.executeQuery();
             while (rs.next()){
-                listempduty.add(rs.getString("emp_duty"));
-               // listemp.add(rs.getString("emp_box"));
-                //listemp.add(rs.getString("emp_time"));
-                System.out.println("show COMBO DUTY");
+                idCombo.getItems().add(rs.getString("emp_id"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    }*/
-    ObservableList<String> listempbox = FXCollections.observableArrayList();
-
-    /*public void showemp_boxToCombo() {
-        try {
-            con = ConnectDb.connectDB();
-            String sql = "SELECT emp_box FROM employee";
-            pst = con.prepareStatement(sql);
-            rs = pst.executeQuery();
-            while (rs.next()){
-                //listemp.add(rs.getString("emp_duty"));
-                listempbox.add(rs.getString("emp_box"));
-                //listemp.add(rs.getString("emp_time"));
-                System.out.println("show COMBO BOX");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }*/
-   /* public void showemp_timeToCombo() {
-        try {
-            con = ConnectDb.connectDB();
-            String sql = "SELECT emp_time    FROM employee";
-            pst = con.prepareStatement(sql);
-            rs = pst.executeQuery();
-            while (rs.next()){
-                //listemp.add(rs.getString("emp_duty"));
-                //listemp.add(rs.getString("emp_box"));
-                listemp.add(rs.getString("emp_time"));
-                System.out.println("show COMBO TIME");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }*/
+    }
 
     public void showTable() throws SQLException {
         try {
@@ -125,7 +81,6 @@ public class WorkManaagerViewController extends Component {
                 observableList.add(new DetailEmployee(rs.getString("emp_id"), rs.getString("emp_name"), rs.getString("emp_duty")
                         , rs.getString("emp_box"), rs.getString("emp_date")
                 ));
-                System.out.println("SHOW COMPLETE");
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -143,32 +98,78 @@ public class WorkManaagerViewController extends Component {
 
     }
 
+    public void updateBtn(ActionEvent event)throws SQLException{
+        if (dutyChoice.getSelectionModel().isEmpty() || boxChoice.getSelectionModel().isEmpty() || dateChoice.getEditor().getText().isEmpty() || idCombo.getSelectionModel().isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setHeaderText("");
+            alert.setTitle("WARNING");
+            alert.setContentText("Please fill out this form completely");
+            alert.showAndWait();
+        }else{
+            String value1 = dutyChoice.getValue().toString();
+            String value2 = boxChoice.getValue().toString();
+            String value3 = dateChoice.getValue().toString();
+            String value4 = idCombo.getValue().toString();
+            try{
+                String sql = "UPDATE employee SET emp_duty= '"+value1+"',emp_box='"+value2+"',emp_date='"+value3+"' WHERE  emp_id = '"+value4+"'";
+                con = ConnectDb.connectDB();
+                pst =con.prepareStatement(sql);
+                pst.execute();
+                System.out.println("UPDATE CORRECT");
+            } catch (Exception e) {
+                e.printStackTrace();
+                System.out.println("UPDATE FAIL");
+            }
+            clearChoice();
+            clearTable();
+            showTable();
+        }
+    }
 
+    public void clearTable(){
+        tableColEmp_id.getTableView().getItems().clear();
+        tableColEmp_name.getTableView().getItems().clear();
+        tableColEmp_duty.getTableView().getItems().clear();
+        tableColEmp_box.getTableView().getItems().clear();
+        tableColEmp_date.getTableView().getItems().clear();
+
+    }
+    public void clearChoice(){
+        idCombo.getItems().clear();
+        dutyChoice.getItems().clear();
+        boxChoice.getItems().clear();
+        dateChoice.getEditor().clear();
+        showemp_nameToCombo();
+        showChoice();
+    }
+
+    public void clearBtn(ActionEvent event){
+        clearChoice();
+    }
+
+    //ยัง insert ไม่ได้
     public void insertBtn(ActionEvent event) throws SQLException {
         try{
-            String sql = "INSERT INTO employee(emp_id,emp_name,emp_duty,emp_box,emp_date) VALUES (?,?,?,?,?)";
+            String sql = "INSERT INTO employee VALUES (?,?,?,?,?)";
             con = ConnectDb.connectDB();
             pst =con.prepareStatement(sql);
             pst.setString(1,idText.getText());
-            pst.setString(2,nameText.getText());
-            pst.setString(3,dutyText.getText());
-            pst.setString(4,boxText.getText());
-            pst.setString(5,dateText.getText());
+            pst.setString(1,nameText.getText());
+            pst.setString(2,dutyChoice.getValue().toString());
+            pst.setString(3,boxChoice.getValue().toString());
+            pst.setString(4,dateChoice.getValue().toString());
             pst.execute();
             System.out.println("INSERT CORRECT");
-
-
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("INSERT MAIDAI");
+            System.out.println("INSERT FAIL");
         }
         nameText.setText("");
         idText.setText("");
-        dutyText.setText("");
-        boxText.setText("");
-        dateText.setText("");
+        clearTable();
         showTable();
     }
+
     public void backBtn(ActionEvent event) throws IOException {
         Stage primaryStage = new Stage();
         try {

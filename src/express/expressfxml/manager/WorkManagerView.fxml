@@ -2,37 +2,43 @@
 
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="express.expressfxml.manager.WorkManaagerViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="express.expressfxml.manager.WorkManaagerViewController">
    <children>
-      <Label layoutX="13.0" layoutY="112.0" text="ชื่อ" />
-      <Label layoutX="20.0" layoutY="178.0" text="เวร" />
-      <Label layoutX="24.0" layoutY="243.0" text="ตู้" />
-      <Button fx:id="finish" layoutX="256.0" layoutY="320.0" mnemonicParsing="false" onAction="#confirmBtn" text="Finish" />
-      <Button fx:id="back" layoutX="182.0" layoutY="320.0" mnemonicParsing="false" onAction="#backBtn" text="back" />
-      <Button layoutX="36.0" layoutY="320.0" mnemonicParsing="false" text="clear" />
-      <TextField fx:id="nameText" layoutX="39.0" layoutY="117.0" />
-      <Label layoutX="10.0" layoutY="278.0" text="วันที่" />
-      <Button fx:id="insert" layoutX="105.0" layoutY="323.0" mnemonicParsing="false" onAction="#insertBtn" text="ยืนยัน" />
-      <TextField fx:id="idText" layoutX="41.0" layoutY="73.0" promptText="ID" />
-      <Label layoutX="18.0" layoutY="77.0" text="ID" />
-      <TextField fx:id="dutyText" layoutX="41.0" layoutY="175.0" />
-      <TextField fx:id="boxText" layoutX="41.0" layoutY="240.0" />
-      <TextField fx:id="dateText" layoutX="43.0" layoutY="275.0" />
+      <Label layoutX="480.0" layoutY="74.0" text="ID" />
+      <Label layoutX="479.0" layoutY="124.0" text="เวร" />
+      <Label layoutX="483.0" layoutY="172.0" text="ตู้" />
+      <Button fx:id="finish" layoutX="644.0" layoutY="451.0" mnemonicParsing="false" onAction="#confirmBtn" prefHeight="34.0" prefWidth="62.0" text="Finish" />
+      <Button fx:id="back" layoutX="14.0" layoutY="451.0" mnemonicParsing="false" onAction="#backBtn" prefHeight="34.0" prefWidth="62.0" text="back" />
+      <Button layoutX="465.0" layoutY="400.0" mnemonicParsing="false" onAction="#clearBtn" text="clear" />
+      <TextField fx:id="nameText" layoutX="64.0" layoutY="367.0" promptText="NAME" />
+      <Label layoutX="477.0" layoutY="225.0" text="วันที่" />
+      <Button fx:id="insert" layoutX="464.0" layoutY="348.0" mnemonicParsing="false" onAction="#insertBtn" text="ยืนยัน" />
+      <TextField fx:id="idText" layoutX="64.0" layoutY="329.0" promptText="ID" />
       <Accordion layoutX="268.0" layoutY="14.0" />
-      <TableView fx:id="tableEmp" layoutX="268.0" layoutY="75.0" prefHeight="200.0" prefWidth="378.0">
+      <TableView fx:id="tableEmp" layoutX="29.0" layoutY="33.0" prefHeight="278.0" prefWidth="410.0">
         <columns>
-          <TableColumn fx:id="tableColEmp_id" prefWidth="75.0" text="C1" />
-          <TableColumn fx:id="tableColEmp_name" prefWidth="75.0" text="C2" />
-            <TableColumn fx:id="tableColEmp_duty" prefWidth="75.0" text="Column X" />
-            <TableColumn fx:id="tableColEmp_box" prefWidth="75.0" text="Column X" />
-            <TableColumn fx:id="tableColEmp_date" prefWidth="75.0" text="Column X" />
+          <TableColumn fx:id="tableColEmp_id" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="tableColEmp_name" prefWidth="75.0" text="NAME" />
+            <TableColumn fx:id="tableColEmp_duty" prefWidth="75.0" text="DUTY" />
+            <TableColumn fx:id="tableColEmp_box" prefWidth="75.0" text="BOX" />
+            <TableColumn fx:id="tableColEmp_date" prefWidth="108.80002441406248" text="DATE" />
         </columns>
       </TableView>
+      <Accordion layoutX="113.0" layoutY="-23.0" />
+      <ChoiceBox fx:id="dutyChoice" layoutX="510.0" layoutY="119.0" prefHeight="26.0" prefWidth="87.0" />
+      <ChoiceBox fx:id="boxChoice" layoutX="510.0" layoutY="168.0" prefHeight="26.0" prefWidth="87.0" />
+      <DatePicker fx:id="dateChoice" layoutX="510.0" layoutY="221.0" prefHeight="26.0" prefWidth="134.0" />
+      <ComboBox fx:id="idCombo" layoutX="510.0" layoutY="69.0" prefHeight="26.0" prefWidth="106.0" />
+      <Button layoutX="617.0" layoutY="268.0" mnemonicParsing="false" onAction="#updateBtn" prefHeight="34.0" prefWidth="72.0" text="Update" />
+      <Button layoutX="209.0" layoutY="405.0" mnemonicParsing="false" onAction="#insertBtn" prefHeight="26.0" prefWidth="50.0" text="Add" />
    </children>
 </AnchorPane>

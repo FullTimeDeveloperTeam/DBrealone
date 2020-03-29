@@ -10,19 +10,20 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="express.expressfxml.manager.WorkManaagerViewController">
    <children>
       <Label layoutX="480.0" layoutY="74.0" text="ID" />
       <Label layoutX="479.0" layoutY="124.0" text="เวร" />
       <Label layoutX="483.0" layoutY="172.0" text="ตู้" />
-      <Button fx:id="finish" layoutX="644.0" layoutY="451.0" mnemonicParsing="false" onAction="#confirmBtn" prefHeight="34.0" prefWidth="62.0" text="Finish" />
-      <Button fx:id="back" layoutX="14.0" layoutY="451.0" mnemonicParsing="false" onAction="#backBtn" prefHeight="34.0" prefWidth="62.0" text="back" />
-      <Button layoutX="465.0" layoutY="400.0" mnemonicParsing="false" onAction="#clearBtn" text="clear" />
-      <TextField fx:id="nameText" layoutX="64.0" layoutY="367.0" promptText="NAME" />
+      <Button fx:id="finish" layoutX="635.0" layoutY="441.0" mnemonicParsing="false" onAction="#confirmBtn" prefHeight="44.0" prefWidth="71.0" text="Finish" />
+      <Button fx:id="back" layoutX="14.0" layoutY="451.0" mnemonicParsing="false" onAction="#backBtn" prefHeight="34.0" prefWidth="62.0" text="Back" />
+      <Button layoutX="540.0" layoutY="271.0" mnemonicParsing="false" onAction="#clearBtn" prefHeight="26.0" prefWidth="62.0" text="Clear" />
+      <TextField fx:id="nameText" layoutX="360.0" layoutY="398.0" prefHeight="26.0" prefWidth="144.0" promptText="NAME" />
       <Label layoutX="477.0" layoutY="225.0" text="วันที่" />
-      <Button fx:id="insert" layoutX="464.0" layoutY="348.0" mnemonicParsing="false" onAction="#insertBtn" text="ยืนยัน" />
-      <TextField fx:id="idText" layoutX="64.0" layoutY="329.0" promptText="ID" />
+      <TextField fx:id="idText" layoutX="360.0" layoutY="360.0" prefHeight="26.0" prefWidth="144.0" promptText="ID" />
       <Accordion layoutX="268.0" layoutY="14.0" />
       <TableView fx:id="tableEmp" layoutX="29.0" layoutY="33.0" prefHeight="278.0" prefWidth="410.0">
         <columns>
@@ -39,6 +40,12 @@
       <DatePicker fx:id="dateChoice" layoutX="510.0" layoutY="221.0" prefHeight="26.0" prefWidth="134.0" />
       <ComboBox fx:id="idCombo" layoutX="510.0" layoutY="69.0" prefHeight="26.0" prefWidth="106.0" />
       <Button layoutX="617.0" layoutY="268.0" mnemonicParsing="false" onAction="#updateBtn" prefHeight="34.0" prefWidth="72.0" text="Update" />
-      <Button layoutX="209.0" layoutY="405.0" mnemonicParsing="false" onAction="#insertBtn" prefHeight="26.0" prefWidth="50.0" text="Add" />
+      <Button layoutX="451.0" layoutY="439.0" mnemonicParsing="false" onAction="#insertBtn" prefHeight="26.0" prefWidth="62.0" text="Add" />
+      <Line endX="-100.0" endY="-105.39999389648438" fill="#c7c3c3" layoutX="432.0" layoutY="441.0" smooth="false" startX="-100.0" startY="32.79998779296875" stroke="#c5c1c1" strokeWidth="2.0" />
+      <ComboBox fx:id="idCombo1" layoutX="181.0" layoutY="379.0" prefHeight="26.0" prefWidth="106.0" />
+      <Button layoutX="247.0" layoutY="437.0" mnemonicParsing="false" onAction="#deleteBtn" prefHeight="26.0" prefWidth="71.0" text="Delete" />
+      <Text layoutX="511.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="จัดการงานพนักงาน" />
+      <Text layoutX="360.0" layoutY="348.0" strokeType="OUTSIDE" strokeWidth="0.0" text="เพิ่มชื่อพนักงาน" />
+      <Text layoutX="181.0" layoutY="348.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ลบชื่อพนักงาน" />
    </children>
 </AnchorPane>

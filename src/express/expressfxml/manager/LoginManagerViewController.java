@@ -67,21 +67,21 @@ public class LoginManagerViewController extends Component {
                         checkLogin++;
                     }
                 }
-            }
-            Stage primaryStage = new Stage();
-            try {
-                if (checkLogin == 1) {
-                    ((Node) event.getSource()).getScene().getWindow().hide();
-                    FXMLLoader loader = new FXMLLoader();
-                    Pane root = (Pane) loader.load(this.getClass().getResource("../manager/HomeView.fxml").openStream());
-                    Scene scene = new Scene(root);
-                    primaryStage.setScene(scene);
-                    primaryStage.show();
-                } else {
-                    JOptionPane.showMessageDialog(this, "ไม่พบผู้ใช้งาน", "แจ้งเตือน", JOptionPane.INFORMATION_MESSAGE);
+                Stage primaryStage = new Stage();
+                try {
+                    if (checkLogin == 1) {
+                        ((Node) event.getSource()).getScene().getWindow().hide();
+                        FXMLLoader loader = new FXMLLoader();
+                        Pane root = (Pane) loader.load(this.getClass().getResource("../manager/HomeView.fxml").openStream());
+                        Scene scene = new Scene(root);
+                        primaryStage.setScene(scene);
+                        primaryStage.show();
+                    } else {
+                        JOptionPane.showMessageDialog(this, "ไม่พบผู้ใช้งาน", "แจ้งเตือน", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
-            } catch (IOException e) {
-                e.printStackTrace();
             }
 
         } catch (SQLException var6) {

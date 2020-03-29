@@ -20,6 +20,7 @@ public class HomeViewController {
             ((Node)event.getSource()).getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             Pane root = (Pane)loader.load(this.getClass().getResource("../manager/WorkManagerView.fxml").openStream());
+            primaryStage.setTitle("WorkManager");
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
             primaryStage.show();

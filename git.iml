@@ -9,5 +9,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="mysql-connector-java-8.0.11" level="project" />
     <orderEntry type="library" name="mysql-connector-java-8.0.111" level="project" />
+    <orderEntry type="library" name="rs2xml" level="project" />
+    <orderEntry type="library" name="mysql-connector-java-5.1.48-bin" level="project" />
   </component>
 </module>

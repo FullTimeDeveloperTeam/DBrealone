@@ -44,6 +44,7 @@ public class LoginManagerViewController extends Component {
             FXMLLoader loader = new FXMLLoader();
             Pane root = (Pane) loader.load(this.getClass().getResource("../../expressfxml/FirstView.fxml").openStream());
             Scene scene = new Scene(root);
+            primaryStage.setTitle("Express");
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (IOException var6) {

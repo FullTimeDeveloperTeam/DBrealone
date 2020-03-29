@@ -13,7 +13,7 @@ import java.io.IOException;
 
 public class FirstViewController {
     @FXML
-    Button managerBtn,employeeBtn;
+    Button managerButton,employeeButton;
 
     public void managerBtn(ActionEvent event) throws IOException {
         Stage primaryStage = new Stage();

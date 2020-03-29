@@ -37,6 +37,7 @@ public class LoginViewController extends Component {
             ((Node)event.getSource()).getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             Pane root = (Pane)loader.load(this.getClass().getResource("../expressfxml/FirstView.fxml").openStream());
+            primaryStage.setTitle("Express");
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
             primaryStage.show();

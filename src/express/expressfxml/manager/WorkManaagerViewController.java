@@ -32,7 +32,7 @@ public class WorkManaagerViewController extends Component {
     @FXML
     Button insert, back, finish;
     @FXML
-    TextField nameText, idText,phoneText;
+    TextField nameText, idText,phoneText, workidText;
 
     @FXML ComboBox idCombo,idCombo1;
     @FXML ChoiceBox dutyChoice, boxChoice;
@@ -112,7 +112,7 @@ public class WorkManaagerViewController extends Component {
     }
 
     public void insertEmpBtn(ActionEvent event) throws SQLException {
-        if (idText.getText().isEmpty() || nameText.getText().isEmpty()){
+        if (idText.getText().isEmpty() || nameText.getText().isEmpty() || phoneText.getText().isEmpty()){
             alert();
         }else {
             try{
@@ -138,6 +138,36 @@ public class WorkManaagerViewController extends Component {
             idCombo1.getItems().clear();
             clearTable();
             showemp_nameToCombo();
+            showEmpTable();
+            showWorkTable();
+        }
+    }
+
+    public void updateEmpBtn(ActionEvent event)throws SQLException{
+        if (idText.getText().isEmpty() || nameText.getText().isEmpty() || phoneText.getText().isEmpty()){
+            alert();
+        }else{
+            String value =  idText.getText();
+            String value1 = nameText.getText();
+            String value2 = phoneText.getText();
+            try{
+                String sql = "UPDATE employee SET emp_name= '"+value1+"',emp_phone='"+value2+"' WHERE  emp_id = '"+value+"'";
+                con = ConnectDb.connectDB();
+                pst =con.prepareStatement(sql);
+                pst.execute();
+                JOptionPane.showMessageDialog(this, "แก้ไขข้อมูลเสร็จสิ้น", "บันทึก", 1);
+                System.out.println("UPDATE CORRECT");
+            } catch (Exception e) {
+                e.printStackTrace();
+                System.out.println("UPDATE FAIL");
+            }
+            nameText.setText("");
+            idText.setText("");
+            phoneText.setText("");
+            idCombo.getItems().clear();
+            idCombo1.getItems().clear();
+            showemp_nameToCombo();
+            clearTable();
             showEmpTable();
             showWorkTable();
         }
@@ -172,33 +202,39 @@ public class WorkManaagerViewController extends Component {
         nameText.setText("");
         idText.setText("");
         phoneText.setText("");
+        idCombo.getItems().clear();
         idCombo1.getItems().clear();
+        showemp_nameToCombo();
+    }
+
+    public void clearWorkBtn(ActionEvent event){
+        clearChoice();
+    }
+
+    public void clearChoice(){
+        idCombo.getItems().clear();
+        idCombo1.getItems().clear();
+        dutyChoice.getItems().clear();
+        boxChoice.getItems().clear();
+        dateChoice.getEditor().clear();
+        workidText.setText("");
+        showemp_nameToCombo();
+        showChoice();
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-    public void updateBtn(ActionEvent event)throws SQLException{
-        if (dutyChoice.getSelectionModel().isEmpty() || boxChoice.getSelectionModel().isEmpty() || dateChoice.getEditor().getText().isEmpty() || idCombo.getSelectionModel().isEmpty()){
+    public void updateWorkBtn(ActionEvent event)throws SQLException{
+        if (workidText.getText().isEmpty()||dutyChoice.getSelectionModel().isEmpty() || boxChoice.getSelectionModel().isEmpty()
+                || dateChoice.getEditor().getText().isEmpty() || idCombo.getSelectionModel().isEmpty()){
             alert();
         }else{
+            String value =  workidText.getText();
             String value1 = dutyChoice.getValue().toString();
             String value2 = boxChoice.getValue().toString();
             String value3 = dateChoice.getValue().toString();
             String value4 = idCombo.getValue().toString();
             try{
-                String sql = "UPDATE employee SET emp_duty= '"+value1+"',emp_box='"+value2+"',emp_date='"+value3+"' WHERE  emp_id = '"+value4+"'";
+                String sql = "UPDATE work_schedule SET work_duty= '"+value1+"',work_box='"+value2+"',work_date='"+value3+"',emp_id='"+value4+"' WHERE  work_id = '"+value+"'";
                 con = ConnectDb.connectDB();
                 pst =con.prepareStatement(sql);
                 pst.execute();
@@ -210,11 +246,62 @@ public class WorkManaagerViewController extends Component {
             }
             clearChoice();
             clearTable();
+            showEmpTable();
+            showWorkTable();
         }
     }
 
-    public void clearBtn(ActionEvent event){
-        clearChoice();
+    public void insertWorkBtn(ActionEvent event) throws SQLException {
+        if (workidText.getText().isEmpty()||dutyChoice.getSelectionModel().isEmpty() || boxChoice.getSelectionModel().isEmpty()
+                || dateChoice.getEditor().getText().isEmpty() || idCombo.getSelectionModel().isEmpty()){
+            alert();
+        }else {
+            try{
+                String sql = "INSERT INTO work_schedule  VALUES (?,?,?,?,? )";
+                con = ConnectDb.connectDB();
+                pst =con.prepareStatement(sql);
+                pst.setString(1,workidText.getText());
+                pst.setString(2,dutyChoice.getValue().toString());
+                pst.setString(3,boxChoice.getValue().toString());
+                pst.setString(4,dateChoice.getValue().toString());
+                pst.setString(5,idCombo.getValue().toString());
+                pst.execute();
+                JOptionPane.showMessageDialog(this, "เพิ่มข้อมูลเสร็จสิ้น", "บันทึก", 1);
+                System.out.println("INSERT CORRECT");
+            } catch (Exception e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(this, "กรอกข้อมูลให้ถูกรูปแบบ", "WARNING", 1);
+                System.out.println("INSERT FAIL");
+            }
+            clearChoice();
+            clearTable();
+            showEmpTable();
+            showWorkTable();
+        }
+    }
+
+
+    public void deleteWorkBtn(ActionEvent event) throws IOException, SQLException {
+        if (workidText.getText().isEmpty()){
+            alert();
+        }else {
+            String value1 = workidText.getText();
+            try{
+                String sql = "DELETE work_schedule FROM work_schedule  WHERE work_id= '"+value1+"'";
+                con = ConnectDb.connectDB();
+                pst =con.prepareStatement(sql);
+                pst.execute();
+                JOptionPane.showMessageDialog(this, "ลบข้อมูลเสร็จสิ้น", "บันทึก", 1);
+                System.out.println("DELETE CORRECT");
+            } catch (Exception e) {
+                e.printStackTrace();
+                System.out.println("DELETE FAIL");
+            }
+            workidText.setText("");
+            clearTable();
+            showEmpTable();
+            showWorkTable();
+        }
     }
 
 
@@ -282,17 +369,7 @@ public class WorkManaagerViewController extends Component {
         tableColWork_box.getTableView().getItems().clear();
         tableColWork_date.getTableView().getItems().clear();
     }
-    public void clearChoice(){
-        idCombo.getItems().clear();
-        idCombo1.getItems().clear();
-        dutyChoice.getItems().clear();
-        boxChoice.getItems().clear();
-        dateChoice.getEditor().clear();
-        nameText.setText("");
-        idText.setText("");
-        showemp_nameToCombo();
-        showChoice();
-    }
+
 
     public void alert(){
         Alert alert = new Alert(Alert.AlertType.WARNING);

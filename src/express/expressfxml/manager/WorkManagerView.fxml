@@ -20,7 +20,7 @@
       <Label layoutX="492.0" layoutY="486.0" text="ตู้" />
       <Button fx:id="finish" layoutX="898.0" layoutY="624.0" mnemonicParsing="false" onAction="#confirmBtn" prefHeight="51.0" prefWidth="78.0" text="Finish" />
       <Button fx:id="back" layoutX="29.0" layoutY="640.0" mnemonicParsing="false" onAction="#backBtn" prefHeight="34.0" prefWidth="62.0" text="Back" />
-      <Button layoutX="472.0" layoutY="535.0" mnemonicParsing="false" onAction="#clearBtn" prefHeight="26.0" prefWidth="62.0" text="Clear" />
+      <Button layoutX="472.0" layoutY="535.0" mnemonicParsing="false" onAction="#clearWorkBtn" prefHeight="26.0" prefWidth="62.0" text="Clear" />
       <TextField fx:id="nameText" layoutX="251.0" layoutY="383.0" prefHeight="26.0" prefWidth="144.0" promptText="NAME" />
       <Label layoutX="647.0" layoutY="438.0" text="วันที่" />
       <TextField fx:id="idText" layoutX="251.0" layoutY="347.0" prefHeight="26.0" prefWidth="144.0" promptText="ID" />
@@ -40,7 +40,7 @@
       <ChoiceBox fx:id="boxChoice" layoutX="515.0" layoutY="482.0" prefHeight="26.0" prefWidth="87.0" />
       <DatePicker fx:id="dateChoice" layoutX="685.0" layoutY="434.0" prefHeight="26.0" prefWidth="134.0" />
       <ComboBox fx:id="idCombo" layoutX="685.0" layoutY="383.0" prefHeight="26.0" prefWidth="87.0" />
-      <Button layoutX="707.0" layoutY="531.0" mnemonicParsing="false" onAction="#updateBtn" prefHeight="34.0" prefWidth="72.0" text="Update" />
+      <Button layoutX="707.0" layoutY="531.0" mnemonicParsing="false" onAction="#updateWorkBtn" prefHeight="34.0" prefWidth="72.0" text="Update" />
       <Button layoutX="359.0" layoutY="470.0" mnemonicParsing="false" onAction="#insertEmpBtn" prefHeight="42.0" prefWidth="78.0" text="Add" />
       <Line endX="-100.0" endY="-105.39999389648438" fill="#c7c3c3" layoutX="313.0" layoutY="425.0" smooth="false" startX="-100.00001525878906" startY="37.600006103515625" stroke="#c5c1c1" strokeWidth="2.0" />
       <ComboBox fx:id="idCombo1" layoutX="47.0" layoutY="347.0" prefHeight="26.0" prefWidth="106.0" />
@@ -58,7 +58,9 @@
       </TableView>
       <TextField fx:id="phoneText" layoutX="251.0" layoutY="421.0" prefHeight="26.0" prefWidth="144.0" promptText="PHONE" />
       <Button layoutX="220.0" layoutY="482.0" mnemonicParsing="false" onAction="#clearEmpBtn" prefHeight="26.0" prefWidth="62.0" text="Clear" />
-      <TextField layoutX="517.0" layoutY="383.0" prefHeight="26.0" prefWidth="87.0" promptText="WORKID" />
-      <Button layoutX="797.0" layoutY="523.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="87.0" text="Add Work" />
+      <TextField fx:id="workidText" layoutX="517.0" layoutY="383.0" prefHeight="26.0" prefWidth="87.0" promptText="WORKID" />
+      <Button layoutX="797.0" layoutY="523.0" mnemonicParsing="false" onAction="#insertWorkBtn" prefHeight="42.0" prefWidth="87.0" text="Add Work" />
+      <Button layoutX="472.0" layoutY="589.0" mnemonicParsing="false" onAction="#deleteWorkBtn" prefHeight="34.0" prefWidth="117.0" text="Delete Work" />
+      <Button layoutX="359.0" layoutY="531.0" mnemonicParsing="false" onAction="#updateEmpBtn" prefHeight="34.0" prefWidth="72.0" text="Update" />
    </children>
 </AnchorPane>

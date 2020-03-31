@@ -49,13 +49,17 @@ public class concludeViewController {
 
     ObservableList observableList = FXCollections.observableArrayList();
     public void showLabelFour() {
-        String sql = "SELECT COUNT(Type_ticket) From ticket WHERE Type_ticket = '4Wheel'";
+        String sql = "SELECT COUNT(Type_ticket) as count_ticket From ticket WHERE Type_ticket ='4wheel'";
         try {
             con = ConnectDb.connectDB();
-            pst = con.prepareStatement(sql);
-            pst.execute();
-            int text = rs.getInt(1);
-            System.out.println(text);
+            ResultSet rs = con.createStatement().executeQuery(sql);
+            while (rs.next()){
+                System.out.println(rs.getInt("count_ticket"));
+            }
+//            int text = rs.getInt(1);
+            System.out.println("gg");
+            System.out.println("gg");
+//            System.out.println(text);
             //fourWheel.setText(text);
         } catch (Exception e) {
             e.printStackTrace();

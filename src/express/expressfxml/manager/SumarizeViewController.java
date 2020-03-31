@@ -54,9 +54,28 @@ public class SumarizeViewController {
     }
     ObservableList<DetailSummary> observableList = FXCollections.observableArrayList();
     public void showTableSum(){
+            String fourWheel ="SELECT COUNT(Type_ticket),SUM(Price)\n" +
+                    "FROM summarize t1\n" +
+                    "INNER JOIN ticket t2 \n" +
+                    "ON t1.ticket_id=t2.ticket_id\n" +
+                    "WHERE t2.Type_ticket ='4wheel'";
+            String sixWheel = "SELECT COUNT(Type_ticket),SUM(Price)\n" +
+                    "FROM summarize t1\n" +
+                    "INNER JOIN ticket t2 \n" +
+                    "ON t1.ticket_id=t2.ticket_id\n" +
+                    "WHERE t2.Type_ticket ='6wheel'";
+            String tenWheel = "SELECT COUNT(Type_ticket),SUM(Price)\n" +
+                    "FROM summarize t1\n" +
+                    "INNER JOIN ticket t2 \n" +
+                    "ON t1.ticket_id=t2.ticket_id\n" +
+                    "WHERE t2.Type_ticket ='10wheel'";
         try {
+
             con = ConnectDb.connectDB();
-            String sql = "SELECT ";
+            String sql = "";
+            pst = con.prepareStatement(sql);
+            pst.execute();
+            //observableList.add(new DetailSummary(rs.getString("work_date"),rs.getString("emp_id"),rs.getString("emp_duty")))
 
 
 

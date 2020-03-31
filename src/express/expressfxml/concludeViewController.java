@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class concludeViewController {
     private Connection con = null;
@@ -55,15 +56,30 @@ public class concludeViewController {
             ResultSet rs = con.createStatement().executeQuery(sql);
             while (rs.next()){
                 System.out.println(rs.getInt("count_ticket"));
+                fourWheel.setText(String.valueOf(rs.getInt("count_ticket")));
             }
 //            int text = rs.getInt(1);
             System.out.println("gg");
             System.out.println("gg");
 //            System.out.println(text);
-            //fourWheel.setText(text);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+    public void showLabelSix(){
+        String sql = "SELECT COUNT(Type_ticket) as count_ticket From ticket WHERE Type_ticket ='6wheel'";
+        try{
+            con = ConnectDb.connectDB();
+            ResultSet rs = con.createStatement().executeQuery(sql);
+            while (rs.next()){
+                sixWheel.setText(String.valueOf(rs.getInt("count_ticket")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
 }

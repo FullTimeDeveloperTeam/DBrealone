@@ -5,20 +5,22 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="express.expressfxml.manager.SumarizeViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="express.expressfxml.manager.SumarizeViewController">
    <children>
-      <TableView layoutY="83.0" prefHeight="200.0" prefWidth="600.0">
+      <TableView fx:id="tableViewSum" layoutY="68.0" prefHeight="252.0" prefWidth="800.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="id" />
-          <TableColumn prefWidth="75.0" text="เวร" />
-            <TableColumn prefWidth="75.0" text="ตู้" />
-            <TableColumn prefWidth="75.0" text="4 ล้อ" />
-            <TableColumn prefWidth="75.0" text="6 ล้อ" />
-            <TableColumn prefWidth="75.0" text="12 ล้อ" />
-            <TableColumn prefWidth="75.0" text="ราคารวม/ครั้งที่พนงกด" />
-            <TableColumn prefWidth="75.0" text="วันที่" />
+            <TableColumn fx:id="tableColumnDate" prefWidth="110.4000244140625" text="วันที่" />
+          <TableColumn fx:id="tableColumnId" prefWidth="72.79998779296875" text="id" />
+          <TableColumn fx:id="tableColumnDuty" prefWidth="77.60003662109375" text="เวร" />
+            <TableColumn fx:id="tableColumnBox" prefWidth="36.0" text="ตู้" />
+            <TableColumn fx:id="tableColumnFour" prefWidth="110.39996337890625" text="4 ล้อ" />
+            <TableColumn fx:id="tableColumnSix" prefWidth="87.20001220703125" text="6 ล้อ" />
+            <TableColumn fx:id="tableColumnTen" prefWidth="108.79998779296875" text="10 ล้อ" />
+            <TableColumn fx:id="tableColumnSpecial" prefWidth="94.4000244140625" text="รถกรณีพิเศษ" />
+            <TableColumn fx:id="tableColumnSum" minWidth="0.0" prefWidth="103.20001220703125" text="ราคารวม" />
+            <TableColumn prefWidth="110.4000244140625" text="วันที่" />
         </columns>
       </TableView>
-      <Button fx:id="back" layoutX="86.0" layoutY="320.0" mnemonicParsing="false" onAction="#backBtn" text="back" />
+      <Button fx:id="back" layoutX="62.0" layoutY="356.0" mnemonicParsing="false" onAction="#backBtn" text="back" />
    </children>
 </AnchorPane>

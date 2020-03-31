@@ -45,14 +45,31 @@ public class NameViewController implements Initializable{
     private ResultSet rs = null;
     private PreparedStatement pst = null;
     ObservableList<DetailNameView> observableList = FXCollections.observableArrayList();
-    LoginViewController lvd ;
+    LoginViewController lvd =new LoginViewController();
 
+    public String getTest() {
+        return test;
+    }
 
-    public  void initialize() throws SQLException {
-        showNameBtn();
-        System.out.println(label.getText());
-        System.out.println("wwwwww");
+    String test;
 
+    public String conTest(String test) {
+        this.test = test;
+        System.out.println(test+"จาก login");
+        label.setText(test);
+        return  test;
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        try {
+            showNameBtn();
+            conTest(getTest());
+            getTest();
+            System.out.println(test +"  inti");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
    /* @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -64,7 +81,8 @@ public class NameViewController implements Initializable{
         System.out.println("www");
         System.out.println(label.getText());
       //  System.out.println(value1);
-
+        test = text;
+        System.out.println(test);
     }
     public void workBtn(ActionEvent event) throws IOException {
         Stage primaryStage = new Stage();
@@ -121,8 +139,10 @@ public class NameViewController implements Initializable{
                 String duty = rs.getString("emp_duty");
                 String box = rs.getString("emp_box");
                 String date = rs.getString("emp_date");
-                System.out.println(value);
-                System.out.println("-----");
+                //System.out.println(value);
+                //System.out.println("-----");
+                System.out.println(test+"showname");
+                //System.out.println(getTest());
                 //System.out.println(value1);
             }
 
@@ -139,12 +159,5 @@ public class NameViewController implements Initializable{
     }
 
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        try {
-            showNameBtn();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
+
 }

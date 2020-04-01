@@ -130,7 +130,7 @@ public class NameViewController implements Initializable{
         String value = label.getText();
         try {
             con = ConnectDb.connectDB();
-            rs = con.createStatement().executeQuery("SELECT emp_name,emp_duty,emp_box,emp_date FROM employee where emp_id ='100'");
+            rs = con.createStatement().executeQuery("SELECT emp_name,emp_duty,emp_box,emp_date FROM employee where emp_id ='101'");
             while (rs.next()){
                 observableList.add(new DetailNameView (rs.getString("emp_name"),rs.getString("emp_duty")
                         ,rs.getString("emp_box"),rs.getString("emp_date")));

@@ -80,6 +80,80 @@ public class concludeViewController {
         }
     }
 
+    public void showLabelTen(){
+        String sql = "SELECT";
+        try {
+            con = ConnectDb.connectDB();
+            ResultSet rs = con.createStatement().executeQuery(sql);
+            while (rs.next()){
+                tenWheel.setText(String.valueOf(rs.getInt("count_ticket")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
+    public void showLabelTicketFour(){
+        String sql = "";
+        try {
+            con = ConnectDb.connectDB();
+            ResultSet rs = con.createStatement().executeQuery(sql);
+            while (rs.next()){
+                ticketFour.setText(String.valueOf(rs.getInt("count_ticket")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
+    public void showLabelTicketSix(){
+        String sql = "";
+        try {
+            con = ConnectDb.connectDB();
+            ResultSet rs = con.createStatement().executeQuery(sql);
+            while (rs.next()){
+                ticketSix.setText(String.valueOf(rs.getInt("count_ticket")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public void showLabelTicketTen(){
+        String sql = "";//เชี้ยแอบมองกูไอสัส
+        try {
+            con = ConnectDb.connectDB();
+            ResultSet rs = con.createStatement().executeQuery(sql);
+            while (rs.next()){
+                ticketTen.setText(String.valueOf(rs.getInt("count_ticket")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showLabelPriceSum(){
+        String sql = "";
+        try {
+            con = ConnectDb.connectDB();
+            ResultSet rs = con.createStatement().executeQuery(sql);
+            while (rs.next()){
+                priceSum.setText(String.valueOf(rs.getInt("")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showLabelTicketAll(){
+        String sql = "";
+        try {
+            con = ConnectDb.connectDB();
+            ResultSet rs = con.createStatement().executeQuery(sql);
+            while (rs.next()){
+                ticketAll.setText(String.valueOf(rs.getInt("")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

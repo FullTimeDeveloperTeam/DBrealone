@@ -35,9 +35,6 @@ public class concludeViewController {
         showLabelFour();
         showLabelSix();
         showLabelTen();
-        showLabelTicketFour();
-        showLabelTicketSix();
-        showLabelTicketTen();
         showLabelPriceSum();
         showLabelTicketAll();
     }
@@ -57,30 +54,36 @@ public class concludeViewController {
 
     ObservableList observableList = FXCollections.observableArrayList();
     public void showLabelFour() {
-        String sql = "SELECT COUNT(Type_ticket) as count_ticket From ticket WHERE Type_ticket ='4wheel'";
+        String sql = "SELECT COUNT(ticket_id) as count_ticket ,SUM(Price) as sum_ticket \n" +
+                "FROM summarize t1\n" +
+                "INNER JOIN ticket t2 \n" +
+                "ON t1.ticket_id=t2.ticket_id\n" +
+                "WHERE t2.Type_ticket ='4wheel'";
         try {
             con = ConnectDb.connectDB();
             ResultSet rs = con.createStatement().executeQuery(sql);
             while (rs.next()){
-                System.out.println(rs.getInt("count_ticket"));
                 fourWheel.setText(String.valueOf(rs.getInt("count_ticket")));
+                ticketFour.setText(String.valueOf(rs.getInt("count_ticket")));
             }
-//            int text = rs.getInt(1);
-            System.out.println("gg");
-            System.out.println("gg");
-//            System.out.println(text);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
     public void showLabelSix(){
-        String sql = "SELECT COUNT(Type_ticket) as count_ticket From ticket WHERE Type_ticket ='6wheel'";
+        String sql = "SELECT COUNT(ticket_id) as count_ticket ,SUM(Price) as sum_ticket \n" +
+                "FROM summarize t1\n" +
+                "INNER JOIN ticket t2 \n" +
+                "ON t1.ticket_id=t2.ticket_id\n" +
+                "WHERE t2.Type_ticket ='6wheel'";
         try{
             con = ConnectDb.connectDB();
             ResultSet rs = con.createStatement().executeQuery(sql);
             while (rs.next()){
                 sixWheel.setText(String.valueOf(rs.getInt("count_ticket")));
+                ticketSix.setText(String.valueOf(rs.getInt("count_ticket")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -88,55 +91,24 @@ public class concludeViewController {
     }
 
     public void showLabelTen(){
-        String sql = "SELECT";
+        String sql = "SELECT COUNT(ticket_id) as count_ticket ,SUM(Price) as sum_ticket \n" +
+                "FROM summarize t1\n" +
+                "INNER JOIN ticket t2 \n" +
+                "ON t1.ticket_id=t2.ticket_id\n" +
+                "WHERE t2.Type_ticket ='10wheel'";
         try {
             con = ConnectDb.connectDB();
             ResultSet rs = con.createStatement().executeQuery(sql);
             while (rs.next()){
                 tenWheel.setText(String.valueOf(rs.getInt("count_ticket")));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void showLabelTicketFour(){
-        String sql = "";
-        try {
-            con = ConnectDb.connectDB();
-            ResultSet rs = con.createStatement().executeQuery(sql);
-            while (rs.next()){
-                ticketFour.setText(String.valueOf(rs.getInt("count_ticket")));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void showLabelTicketSix(){
-        String sql = "";
-        try {
-            con = ConnectDb.connectDB();
-            ResultSet rs = con.createStatement().executeQuery(sql);
-            while (rs.next()){
-                ticketSix.setText(String.valueOf(rs.getInt("count_ticket")));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-    public void showLabelTicketTen(){
-        String sql = "";//เชี้ยแอบมองกูไอสัส
-        try {
-            con = ConnectDb.connectDB();
-            ResultSet rs = con.createStatement().executeQuery(sql);
-            while (rs.next()){
                 ticketTen.setText(String.valueOf(rs.getInt("count_ticket")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
+
 
     public void showLabelPriceSum(){
         String sql = "";

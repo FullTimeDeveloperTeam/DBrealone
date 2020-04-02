@@ -1,13 +1,13 @@
 package express.expressfxml;
 
 public class DetailNameView {
-    public String getName() {
+  /*  public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
-    }
+    }*/
 
     public String getDuty() {
         return duty;
@@ -35,8 +35,8 @@ public class DetailNameView {
 
     String name,duty,box,date;
 
-    public DetailNameView(String name, String duty, String box, String date) {
-        this.name = name;
+    public DetailNameView( String duty, String box, String date) {
+        //this.name = name;
         this.duty = duty;
         this.box = box;
         this.date = date;

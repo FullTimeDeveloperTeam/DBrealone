@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class WorkViewController {
     @FXML Button okBtn, backBtn;
@@ -54,11 +55,34 @@ public class WorkViewController {
             String sql ="INSERT INTO Type_vehicle,Type_ticket VALUES (?,?) ";
             pst = con.prepareStatement(sql);
             pst.execute();
-            
+
+
+
         } catch (Exception e) {
             e.printStackTrace();
         }
 
     }
+
+    public void insertSixCar(){
+        try {
+            con = ConnectDb.connectDB();
+            String sql = "INSERT INTO ";
+            pst = con.prepareStatement(sql);
+            pst.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void insertTenCar(){
+
+    }
+
+
+    public void insertSpecialCar(){
+
+    }
+
 
 }

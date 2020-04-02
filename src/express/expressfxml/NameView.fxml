@@ -8,15 +8,14 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="express.expressfxml.NameViewController">
    <children>
-      <TableView fx:id="tableemp" layoutX="134.0" layoutY="70.0" prefHeight="200.0" prefWidth="301.0">
+      <TableView fx:id="tableemp" layoutX="50.0" layoutY="64.0" prefHeight="218.0" prefWidth="439.0">
         <columns>
-          <TableColumn fx:id="tableColumnName" prefWidth="75.0" text="ชื่อ" />
-          <TableColumn fx:id="tableColumnDuty" prefWidth="75.0" text="เวร" />
-            <TableColumn fx:id="tableColumnBox" prefWidth="75.0" text="ตู้" />
-            <TableColumn fx:id="tableColumnDate" prefWidth="75.0" text="วันที่" />
+            <TableColumn fx:id="tableColumnDate" prefWidth="180.0" text="วันที่" />
+          <TableColumn fx:id="tableColumnDuty" prefWidth="134.4000244140625" text="เวร" />
+            <TableColumn fx:id="tableColumnBox" prefWidth="69.60003662109375" text="ตู้" />
         </columns>
       </TableView>
-      <Button fx:id="workBtn" layoutX="108.0" layoutY="283.0" mnemonicParsing="false" onAction="#workBtn" text="เข้าสู่การทำงาน" />
+      <Button fx:id="workBtn" layoutX="98.0" layoutY="296.0" mnemonicParsing="false" onAction="#workBtn" text="เข้าสู่การทำงาน" />
       <Button fx:id="outBtn" layoutX="410.0" layoutY="296.0" mnemonicParsing="false" onAction="#outBtn" text="ออกงาน" />
       <Button fx:id="summaryBtn" layoutX="108.0" layoutY="343.0" mnemonicParsing="false" onAction="#summaryBtn" text="สรุปงาน" />
       <Label fx:id="label" layoutX="36.0" layoutY="14.0" text="Label" />

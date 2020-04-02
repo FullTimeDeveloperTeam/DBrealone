@@ -31,7 +31,7 @@ public class NameViewController implements Initializable{
     @FXML
     TableView<DetailNameView> tableemp;
     @FXML
-    TableColumn<DetailNameView,String> tableColumnName;
+    TableColumn<DetailNameView,String> tableColumnId;
 
     @FXML TableColumn<DetailNameView,String> tableColumnDuty;
 
@@ -130,15 +130,16 @@ public class NameViewController implements Initializable{
         String value = label.getText();
         try {
             con = ConnectDb.connectDB();
-            rs = con.createStatement().executeQuery("SELECT emp_name,emp_duty,emp_box,emp_date FROM employee where emp_id ='101'");
+            rs = con.createStatement().executeQuery("SELECT emp_id ,work_duty,work_box,work_date FROM work_schedule where emp_id ='101'");
             while (rs.next()){
-                observableList.add(new DetailNameView (rs.getString("emp_name"),rs.getString("emp_duty")
-                        ,rs.getString("emp_box"),rs.getString("emp_date")));
+                observableList.add(new DetailNameView (rs.getString("work_duty")
+                        ,rs.getString("work_box"),rs.getString("work_date")));
 
-                String name = rs.getString("emp_name");
-                String duty = rs.getString("emp_duty");
-                String box = rs.getString("emp_box");
-                String date = rs.getString("emp_date");
+                String id = rs.getString("emp_id");
+                String duty = rs.getString("work_duty");
+                String box = rs.getString("work_box");
+                String date = rs.getString("work_date");
+                System.out.println(id);
                 //System.out.println(value);
                 //System.out.println("-----");
                 System.out.println(test+"showname");
@@ -149,7 +150,7 @@ public class NameViewController implements Initializable{
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        tableColumnName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        //tableColumnId.setCellValueFactory(new PropertyValueFactory<>("id"));
         tableColumnDuty.setCellValueFactory(new PropertyValueFactory<>("duty"));
         tableColumnBox.setCellValueFactory(new PropertyValueFactory<>("box"));
         tableColumnDate.setCellValueFactory(new PropertyValueFactory<>("date"));

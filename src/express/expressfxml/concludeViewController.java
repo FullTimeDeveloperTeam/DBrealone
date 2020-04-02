@@ -33,6 +33,13 @@ public class concludeViewController {
 
     public void initialize(){
         showLabelFour();
+        showLabelSix();
+        showLabelTen();
+        showLabelTicketFour();
+        showLabelTicketSix();
+        showLabelTicketTen();
+        showLabelPriceSum();
+        showLabelTicketAll();
     }
     public void backBtn(ActionEvent event) throws IOException {
         Stage primaryStage = new Stage();

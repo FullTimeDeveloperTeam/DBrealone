@@ -9,6 +9,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -24,19 +26,24 @@ public class concludeViewController {
     private ResultSet rs = null;
     private PreparedStatement pst = null;
 
-
     @FXML
-    Button back;
+    DatePicker dateemp;
+    @FXML
+    ComboBox idemp;
+    @FXML
+    Button back,confirmBtn;
+
     @FXML
     Label fourWheel,sixWheel,tenWheel,ticketFour,ticketSix,ticketTen,priceSum,ticketAll;
 
 
-    public void initialize(){
+    public void initialize() throws SQLException{
         showLabelFour();
         showLabelSix();
         showLabelTen();
         showLabelPriceSum();
         showLabelTicketAll();
+        showCombo();
     }
     public void backBtn(ActionEvent event) throws IOException {
         Stage primaryStage = new Stage();
@@ -142,5 +149,32 @@ public class concludeViewController {
         }
     }
 
-//
+    public void showCombo(){
+        try {
+            con = ConnectDb.connectDB();
+            pst = con.prepareStatement("SELECT emp_id FROM employee");
+            rs = pst.executeQuery();
+            while (rs.next()){
+                idemp.getItems().add(rs.getString("emp_id"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public void ConfirmBtn(){
+        try{
+            String value = idemp.getValue().toString();
+            String value1 = dateemp.getValue().toString();
+            con = ConnectDb.connectDB();
+            ResultSet rs = con.createStatement().executeQuery("SELECT emp_id,work_date from ");
+            while (rs.next()){
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
 }

@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -19,6 +20,8 @@ import java.sql.SQLException;
 
 public class WorkViewController {
     @FXML Button okBtn, backBtn,fourWheel,sixWheel,tenWheel,specialWheel;
+    @FXML
+    DatePicker dateAddTable;
     private Connection con = null;
     private ResultSet rs = null;
     private PreparedStatement pst = null;
@@ -49,7 +52,9 @@ public class WorkViewController {
             var6.printStackTrace();
         }
     }
+
     public void showTableCar(){
+        String value = dateAddTable.getValue().toString();
         try{
             con = ConnectDb.connectDB();
             String sql = "SELECT  ";

@@ -1,14 +1,14 @@
 package express.expressfxml;
 
 public class DetailCar {
-    String id,ticket,price;
+    String date,ticket,price;
 
-    public String getId() {
-        return id;
+    public String getDate() {
+        return date;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public String getTicket() {
@@ -27,8 +27,8 @@ public class DetailCar {
         this.price = price;
     }
 
-    public DetailCar(String id, String ticket, String price) {
-        this.id = id;
+    public DetailCar(String date, String ticket, String price) {
+        this.date = date;
         this.ticket = ticket;
         this.price = price;
     }

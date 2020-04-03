@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -10,17 +11,15 @@
       <TableView fx:id="tableViewSum" layoutY="68.0" prefHeight="252.0" prefWidth="800.0">
         <columns>
             <TableColumn fx:id="tableColumnDate" prefWidth="110.4000244140625" text="วันที่" />
-          <TableColumn fx:id="tableColumnId" prefWidth="72.79998779296875" text="id" />
-          <TableColumn fx:id="tableColumnDuty" prefWidth="77.60003662109375" text="เวร" />
-            <TableColumn fx:id="tableColumnBox" prefWidth="36.0" text="ตู้" />
-            <TableColumn fx:id="tableColumnFour" prefWidth="110.39996337890625" text="4 ล้อ" />
-            <TableColumn fx:id="tableColumnSix" prefWidth="87.20001220703125" text="6 ล้อ" />
-            <TableColumn fx:id="tableColumnTen" prefWidth="108.79998779296875" text="10 ล้อ" />
-            <TableColumn fx:id="tableColumnSpecial" prefWidth="94.4000244140625" text="รถกรณีพิเศษ" />
-            <TableColumn fx:id="tableColumnSum" minWidth="0.0" prefWidth="103.20001220703125" text="ราคารวม" />
-            <TableColumn prefWidth="110.4000244140625" text="วันที่" />
+          <TableColumn fx:id="tableColumnId" prefWidth="77.60003662109375" text="id" />
+            <TableColumn fx:id="tableColumnFour" prefWidth="105.5999755859375" text="4 ล้อ" />
+            <TableColumn fx:id="tableColumnSix" prefWidth="93.5999755859375" text="6 ล้อ" />
+            <TableColumn fx:id="tableColumnTen" prefWidth="125.60003662109375" text="10 ล้อ" />
+            <TableColumn fx:id="tableColumnSpecial" prefWidth="130.39996337890625" text="รถกรณีพิเศษ" />
+            <TableColumn fx:id="tableColumnSum" minWidth="0.0" prefWidth="152.800048828125" text="ราคารวม" />
         </columns>
       </TableView>
       <Button fx:id="back" layoutX="62.0" layoutY="356.0" mnemonicParsing="false" onAction="#backBtn" text="back" />
+      <DatePicker layoutX="225.0" layoutY="350.0" promptText="CHOOSE DATE" />
    </children>
 </AnchorPane>

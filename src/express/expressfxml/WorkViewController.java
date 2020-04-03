@@ -84,7 +84,7 @@ public class WorkViewController {
                 nummax++;
                 value1 = String.valueOf(nummax);
             }
-
+            nummax++;
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -150,7 +150,7 @@ public class WorkViewController {
             pst.setString(1,value1);
             pst.setString(2,value2);
             pst.setString(3,value3);
-            pst.setString(3,value4);
+
             pst.execute();
             System.out.println("INSERT CORRECT");
         } catch (Exception e) {
@@ -176,7 +176,7 @@ public class WorkViewController {
             pst.setString(1,value1);
             pst.setString(2,value2);
             pst.setString(3,value3);
-            pst.setString(3,value4);
+
             pst.execute();
             System.out.println("INSERT CORRECT");
         } catch (Exception e) {
@@ -198,7 +198,7 @@ public class WorkViewController {
             pst.setString(1,value1);
             pst.setString(2,value2);
             pst.setString(3,value3);
-            pst.setString(3,value4);
+
             pst.execute();
             System.out.println("INSERT CORRECT");
         } catch (Exception e) {
@@ -221,7 +221,7 @@ public class WorkViewController {
             pst.setString(1,value1);
             pst.setString(2,value2);
             pst.setString(3,value3);
-            pst.setString(3,value4);
+
             pst.execute();
             System.out.println("INSERT CORRECT");
         } catch (Exception e) {

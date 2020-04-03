@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -57,41 +58,83 @@ public class WorkViewController {
             e.printStackTrace();
         }
     }
-    public void insertFourCar(){
-        try {
+
+
+    String value1 = "";
+    String value2 = "";
+    String value3 = "";
+    public void insertFourCar(ActionEvent event) throws SQLException {
+        String value4 = "1";
+        try{
+            String sql = "INSERT INTO summarize  VALUES (?,?,?,? )";
             con = ConnectDb.connectDB();
-            String sql ="INSERT INTO ticket VALUES ('4Wheel' ,'4Wheel',30) ";
-            pst = con.prepareStatement(sql);
+            pst =con.prepareStatement(sql);
+            pst.setString(1,value1);
+            pst.setString(2,value2);
+            pst.setString(3,value3);
+            pst.setString(3,value4);
             pst.execute();
-
-
-
-
-
-            pst.execute();
+            System.out.println("INSERT CORRECT");
         } catch (Exception e) {
             e.printStackTrace();
+            System.out.println("INSERT FAIL");
         }
-
     }
 
     public void insertSixCar(){
-        try {
+        String value4 = "2";
+        try{
+            String sql = "INSERT INTO summarize  VALUES (?,?,?,? )";
             con = ConnectDb.connectDB();
-            String sql = "INSERT INTO ";
-            pst = con.prepareStatement(sql);
+            pst =con.prepareStatement(sql);
+            pst.setString(1,value1);
+            pst.setString(2,value2);
+            pst.setString(3,value3);
+            pst.setString(3,value4);
             pst.execute();
-        } catch (SQLException e) {
+            System.out.println("INSERT CORRECT");
+        } catch (Exception e) {
             e.printStackTrace();
+            System.out.println("INSERT FAIL");
         }
     }
 
     public void insertTenCar(){
+        String value4 = "3";
+        try{
+            String sql = "INSERT INTO summarize  VALUES (?,?,?,? )";
+            con = ConnectDb.connectDB();
+            pst =con.prepareStatement(sql);
+            pst.setString(1,value1);
+            pst.setString(2,value2);
+            pst.setString(3,value3);
+            pst.setString(3,value4);
+            pst.execute();
+            System.out.println("INSERT CORRECT");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("INSERT FAIL");
+        }
 
     }
 
 
     public void insertSpecialCar(){
+        String value4 = "4";
+        try{
+            String sql = "INSERT INTO summarize  VALUES (?,?,?,? )";
+            con = ConnectDb.connectDB();
+            pst =con.prepareStatement(sql);
+            pst.setString(1,value1);
+            pst.setString(2,value2);
+            pst.setString(3,value3);
+            pst.setString(3,value4);
+            pst.execute();
+            System.out.println("INSERT CORRECT");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("INSERT FAIL");
+        }
 
     }
 

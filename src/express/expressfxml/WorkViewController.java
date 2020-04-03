@@ -143,7 +143,7 @@ public class WorkViewController {
         value3 = getWorkID();
         String value4 = "1";
         try{
-            String sql = "INSERT INTO summarize  VALUES (?,?,?,? )";
+            String sql = "INSERT INTO summarize (space_id,emp_id,work_id,ticket_id) VALUES (?,?,?,? )";
             con = ConnectDb.connectDB();
             pst =con.prepareStatement(sql);
 
@@ -214,7 +214,7 @@ public class WorkViewController {
         value3 = getWorkID();
         String value4 = "4";
         try{
-            String sql = "INSERT INTO summarize  VALUES (?,?,?,? )";
+            String sql = "INSERT INTO summarize (space_id,emp_id,work_id,ticket_id) VALUES (?,?,?,? )";
             con = ConnectDb.connectDB();
             pst =con.prepareStatement(sql);
             pst.setString(1,value1);

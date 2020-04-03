@@ -39,7 +39,9 @@ public class ScheduleViewController {
     private ResultSet rs = null;
     private PreparedStatement pst = null;
 
-
+    public void initialize() throws SQLException {
+        showSchedule();
+    }
     public void workBtn(ActionEvent event) {
         Stage primaryStage = new Stage();
         try {

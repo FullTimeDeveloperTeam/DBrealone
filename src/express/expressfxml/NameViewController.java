@@ -40,8 +40,8 @@ public class NameViewController implements Initializable {
     TableColumn<DetailNameView, String> tableColumnDate;
     @FXML
     Label label;
-    @FXML
-    ComboBox idCombo;
+    //@FXML
+    //ComboBox idCombo;
     //LoginViewController loginViewController ;
     private Connection con = null;
     private ResultSet rs = null;
@@ -56,13 +56,13 @@ public class NameViewController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         try {
             showNameBtn();
-            //showComboBox();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-   /* public void showComboBox() {
+    /*public void showComboBox() {
         try {
             con = ConnectDb.connectDB();
             pst = con.prepareStatement("SELECT emp_id FROM employee");
@@ -74,8 +74,8 @@ public class NameViewController implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }*/
-
+    }
+*/
     public void workBtn(ActionEvent event) throws IOException {
         Stage primaryStage = new Stage();
         try {

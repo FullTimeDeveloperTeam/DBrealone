@@ -6,24 +6,28 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="express.expressfxml.WorkViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="express.expressfxml.WorkViewController">
    <children>
-      <Label layoutX="119.0" layoutY="14.0" text="ประเภทรถ" />
-      <Button fx:id="okBtn" layoutX="51.0" layoutY="252.0" mnemonicParsing="false" text="ตกลง" />
-      <Button fx:id="backBtn" layoutX="166.0" layoutY="252.0" mnemonicParsing="false" onAction="#backBtn" text="กลับไปหน้าก่อนหน้า" />
-      <TableView layoutX="297.0" layoutY="135.0" prefHeight="302.0" prefWidth="412.0">
+      <Label layoutX="604.0" layoutY="57.0" text="ประเภทรถ" />
+      <Button fx:id="okBtn" layoutX="48.0" layoutY="521.0" mnemonicParsing="false" text="ตกลง" />
+      <Button fx:id="backBtn" layoutX="349.0" layoutY="464.0" mnemonicParsing="false" onAction="#backBtn" text="กลับไปหน้าก่อนหน้า" />
+      <TableView layoutX="25.0" layoutY="28.0" prefHeight="294.0" prefWidth="317.0">
         <columns>
-            <TableColumn fx:id="tableDate" prefWidth="137.5999755859375" text="วันที่" />
-          <TableColumn fx:id="tableTypeTicket" prefWidth="152.79998779296875" text="ประเภทตั๋ว" />
-          <TableColumn fx:id="tableTypeVehicle" prefWidth="122.4000244140625" text="ราคา" />
+            <TableColumn fx:id="tableDate" prefWidth="117.60000038146973" text="วันที่" />
+          <TableColumn fx:id="tableTypeTicket" prefWidth="114.4000244140625" text="ประเภทตั๋ว" />
+          <TableColumn fx:id="tableTypeVehicle" prefWidth="83.20001220703125" text="ราคา" />
         </columns>
       </TableView>
-      <Button fx:id="finish" layoutX="116.0" layoutY="335.0" mnemonicParsing="false" onAction="#confirmBtn" text="เสร็จสิ้น" />
-      <Button fx:id="fourWheel" layoutX="40.0" layoutY="68.0" mnemonicParsing="false" text="4 ล้อ" />
-      <Button fx:id="sixWheel" layoutX="122.0" layoutY="68.0" mnemonicParsing="false" text="6 ล้อ" />
-      <Button fx:id="tenWheel" layoutX="198.0" layoutY="68.0" mnemonicParsing="false" text="10ล้อ" />
-      <Button fx:id="specialWheel" layoutX="284.0" layoutY="68.0" mnemonicParsing="false" text="รถกรณีพิเศษ" />
-      <DatePicker fx:id="dateAddTable" layoutX="55.0" layoutY="148.0" promptText="เลือกวันที่" />
+      <Button fx:id="finish" layoutX="809.0" layoutY="560.0" mnemonicParsing="false" onAction="#confirmBtn" text="เสร็จสิ้น" />
+      <Button fx:id="fourWheel" layoutX="768.0" layoutY="143.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="82.0" text="4 ล้อ" />
+      <Button fx:id="sixWheel" layoutX="768.0" layoutY="242.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="82.0" text="6 ล้อ" />
+      <Button fx:id="tenWheel" layoutX="768.0" layoutY="342.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="82.0" text="10ล้อ" />
+      <Button fx:id="specialWheel" layoutX="760.0" layoutY="443.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="98.0" style="-fx-background-color: #ff4500;" text="กรณีพิเศษ" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="13.0" />
+         </font></Button>
+      <DatePicker fx:id="dateAddTable" layoutX="363.0" layoutY="274.0" promptText="เลือกวันที่" />
    </children>
 </AnchorPane>

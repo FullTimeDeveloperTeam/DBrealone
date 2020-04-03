@@ -143,7 +143,7 @@ public class WorkViewController {
         value3 = getWorkID();
         String value4 = "1";
         try{
-            String sql = "INSERT INTO summarize (space_id,emp_id,work_id,ticket_id) VALUES (?,?,?,? )";
+            String sql = "INSERT INTO summarize (space_id,emp_id,work_id,ticket_id) VALUES (?,?,?,'1' )";
             con = ConnectDb.connectDB();
             pst =con.prepareStatement(sql);
 
@@ -161,6 +161,7 @@ public class WorkViewController {
             System.out.println(value3+" 3");
             System.out.println(value4+" 4");
         }
+        clearTable();
         showTableCar();
     }
 
@@ -169,7 +170,7 @@ public class WorkViewController {
         value3 = getWorkID();
         String value4 = "2";
         try{
-            String sql = "INSERT INTO summarize  VALUES (?,?,?,? )";
+            String sql = "INSERT INTO summarize  VALUES (?,?,?,'2' )";
             con = ConnectDb.connectDB();
             pst =con.prepareStatement(sql);
             pst.setString(1,value1);
@@ -191,7 +192,7 @@ public class WorkViewController {
         value3 = getWorkID();
         String value4 = "3";
         try{
-            String sql = "INSERT INTO summarize  VALUES (?,?,?,? )";
+            String sql = "INSERT INTO summarize  VALUES (?,?,?,'3' )";
             con = ConnectDb.connectDB();
             pst =con.prepareStatement(sql);
             pst.setString(1,value1);
@@ -214,7 +215,7 @@ public class WorkViewController {
         value3 = getWorkID();
         String value4 = "4";
         try{
-            String sql = "INSERT INTO summarize (space_id,emp_id,work_id,ticket_id) VALUES (?,?,?,? )";
+            String sql = "INSERT INTO summarize (space_id,emp_id,work_id,ticket_id) VALUES (?,?,?,'4' )";
             con = ConnectDb.connectDB();
             pst =con.prepareStatement(sql);
             pst.setString(1,value1);

@@ -8,8 +8,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -27,25 +27,35 @@ public class WorkViewController {
     private Connection con = null;
     private ResultSet rs = null;
     private PreparedStatement pst = null;
+    int countCar = 0;
+    String value ="";
     String value1 = "";
-    String value2 = "101";
-    String value3 = getValue();
+    String value2 = "";
+    String value3 = "";
+    @FXML
+    TextField empIdTextField;
+    @FXML TableView<DetailCar> tableWork;
+    @FXML TableColumn<DetailCar,String> tableColID;
+    @FXML TableColumn<DetailCar,String> tableColDate;
+    @FXML TableColumn<DetailCar,String> tableColType;
+    @FXML TableColumn<DetailCar,String> tableColPrice;
 
 
     ObservableList<DetailCar> observableList = FXCollections.observableArrayList();
 
     public void initialize() throws SQLException {
-
+        value1 = getSpaceID();
         System.out.println(value3);
-
     }
 
     public WorkViewController() throws SQLException {
     }
 
-    public String getValue()throws SQLException{
-//        String value = dateAddTable.getValue().toString();
-        String value = "2020-04-01";
+    public int getCountCar(){
+        countCar++;
+        return countCar;
+    }
+    public String getWorkID()throws SQLException{
         try{
             con = ConnectDb.connectDB();
             String sql = "SELECT work_id \n" +
@@ -61,6 +71,162 @@ public class WorkViewController {
         }
         return value3;
     }
+
+    public String getSpaceID()throws SQLException{
+        int nummax = 0;
+        try{
+            con = ConnectDb.connectDB();
+            String sql = "SELECT Max(space_id) as maxspace \n" +
+                    "FROM summarize";
+            ResultSet rs = con.createStatement().executeQuery(sql);
+            while (rs.next()){
+                nummax = rs.getInt("maxspace");
+                nummax++;
+                value1 = String.valueOf(nummax);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return value1;
+    }
+
+    public void oKBtn(){
+        value2 = empIdTextField.getText();
+        value = dateAddTable.getValue().toString();
+        clearTable();
+        showTableCar();
+    }
+
+    public void showTableCar(){
+        try{
+            con = ConnectDb.connectDB();
+            String sql = "SELECT t2.Type_ticket as ticket, t2.Price as price,t3.work_date as date_n \n" +
+                    "                  FROM summarize t1\n" +
+                    "                    INNER JOIN ticket t2 \n" +
+                    "                    ON t1.ticket_id=t2.ticket_id\n" +
+                    "                    INNER JOIN work_schedule t3\n" +
+                    "                    ON t1.work_id=t3.work_id\n" +
+                    "                   WHERE t3.work_date='"+value+"' AND t3.emp_id='"+value2+"' ";
+            ResultSet rs = con.createStatement().executeQuery(sql);
+            while (rs.next()){
+                countCar++;
+                observableList.add(new DetailCar(String.valueOf(countCar),rs.getString("date_n"),rs.getString("ticket"),rs.getString("price")));
+                System.out.println("-----------");
+                System.out.println(countCar);
+                System.out.println("-----------");
+            }
+
+            System.out.println("SHOW CORRECT");
+        } catch (Exception e) {
+            System.out.println("SHOW FAIL");
+            e.printStackTrace();
+        }
+
+        tableColID.setCellValueFactory(new PropertyValueFactory<>("countCar"));
+        tableColDate.setCellValueFactory(new PropertyValueFactory<>("date"));
+        tableColType.setCellValueFactory(new PropertyValueFactory<>("ticket"));
+        tableColPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
+        tableWork.setItems(null);
+        tableWork.setItems(observableList);
+    }
+
+    public void clearTable(){
+        tableColID.getTableView().getItems().clear();
+        tableColDate.getTableView().getItems().clear();
+        tableColType.getTableView().getItems().clear();
+        tableColPrice.getTableView().getItems().clear();
+    }
+
+    public void insertFourCar(ActionEvent event) throws SQLException {
+        value1 = getSpaceID();
+        value3 = getWorkID();
+        String value4 = "1";
+        try{
+            String sql = "INSERT INTO summarize  VALUES (?,?,?,? )";
+            con = ConnectDb.connectDB();
+            pst =con.prepareStatement(sql);
+            pst.setString(1,value1);
+            pst.setString(2,value2);
+            pst.setString(3,value3);
+            pst.setString(3,value4);
+            pst.execute();
+            System.out.println("INSERT CORRECT");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("INSERT FAIL");
+        }
+        showTableCar();
+    }
+
+    public void insertSixCar(ActionEvent event) throws SQLException {
+        value1 = getSpaceID();
+        value3 = getWorkID();
+        String value4 = "2";
+        try{
+            String sql = "INSERT INTO summarize  VALUES (?,?,?,? )";
+            con = ConnectDb.connectDB();
+            pst =con.prepareStatement(sql);
+            pst.setString(1,value1);
+            pst.setString(2,value2);
+            pst.setString(3,value3);
+            pst.setString(3,value4);
+            pst.execute();
+            System.out.println("INSERT CORRECT");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("INSERT FAIL");
+        }
+        clearTable();
+        showTableCar();
+    }
+
+    public void insertTenCar(ActionEvent event) throws SQLException {
+        value1 = getSpaceID();
+        value3 = getWorkID();
+        String value4 = "3";
+        try{
+            String sql = "INSERT INTO summarize  VALUES (?,?,?,? )";
+            con = ConnectDb.connectDB();
+            pst =con.prepareStatement(sql);
+            pst.setString(1,value1);
+            pst.setString(2,value2);
+            pst.setString(3,value3);
+            pst.setString(3,value4);
+            pst.execute();
+            System.out.println("INSERT CORRECT");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("INSERT FAIL");
+        }
+        clearTable();
+        showTableCar();
+
+    }
+
+    public void insertSpecialCar(ActionEvent event) throws SQLException {
+        value1 = getSpaceID();
+        value3 = getWorkID();
+        String value4 = "4";
+        try{
+            String sql = "INSERT INTO summarize  VALUES (?,?,?,? )";
+            con = ConnectDb.connectDB();
+            pst =con.prepareStatement(sql);
+            pst.setString(1,value1);
+            pst.setString(2,value2);
+            pst.setString(3,value3);
+            pst.setString(3,value4);
+            pst.execute();
+            System.out.println("INSERT CORRECT");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("INSERT FAIL");
+        }
+        clearTable();
+        showTableCar();
+    }
+
+
     public void confirmBtn(ActionEvent event) throws IOException {
         Stage primaryStage = new Stage();
         try{
@@ -87,104 +253,6 @@ public class WorkViewController {
         }catch ( IOException var6){
             var6.printStackTrace();
         }
-    }
-
-    public void showTableCar(){
-        String value = dateAddTable.getValue().toString();
-        try{
-            con = ConnectDb.connectDB();
-            String sql = "SELECT t2.Type_ticket as type, t2.Price as cost,t3.work_date as date_n \n" +
-                    "FROM summarize t1\n" +
-                    "INNER JOIN ticket t2 \n" +
-                    "ON t1.ticket_id=t2.ticket_id\n"+
-                    "INNER JOIN work_schedule t3\n"+
-                    "ON t1.work_id=t3.work_id\n"+
-                    "WHERE ";
-            ResultSet rs = con.createStatement().executeQuery(sql);
-            while (rs.next()){
-                observableList.add(new DetailCar(rs.getString("date_n"),rs.getString("type"),rs.getString("cost")));
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-
-    public void insertFourCar(ActionEvent event) throws SQLException {
-        value3 = getValue();
-        String value4 = "1";
-        try{
-            String sql = "INSERT INTO summarize  VALUES (?,?,?,? )";
-            con = ConnectDb.connectDB();
-            pst =con.prepareStatement(sql);
-            pst.setString(1,value1);
-            pst.setString(2,value2);
-            pst.setString(3,value3);
-            pst.setString(3,value4);
-            pst.execute();
-            System.out.println("INSERT CORRECT");
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("INSERT FAIL");
-        }
-    }
-
-    public void insertSixCar(){
-        String value4 = "2";
-        try{
-            String sql = "INSERT INTO summarize  VALUES (?,?,?,? )";
-            con = ConnectDb.connectDB();
-            pst =con.prepareStatement(sql);
-            pst.setString(1,value1);
-            pst.setString(2,value2);
-            pst.setString(3,value3);
-            pst.setString(3,value4);
-            pst.execute();
-            System.out.println("INSERT CORRECT");
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("INSERT FAIL");
-        }
-    }
-
-    public void insertTenCar(){
-        String value4 = "3";
-        try{
-            String sql = "INSERT INTO summarize  VALUES (?,?,?,? )";
-            con = ConnectDb.connectDB();
-            pst =con.prepareStatement(sql);
-            pst.setString(1,value1);
-            pst.setString(2,value2);
-            pst.setString(3,value3);
-            pst.setString(3,value4);
-            pst.execute();
-            System.out.println("INSERT CORRECT");
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("INSERT FAIL");
-        }
-
-    }
-
-
-    public void insertSpecialCar(){
-        String value4 = "4";
-        try{
-            String sql = "INSERT INTO summarize  VALUES (?,?,?,? )";
-            con = ConnectDb.connectDB();
-            pst =con.prepareStatement(sql);
-            pst.setString(1,value1);
-            pst.setString(2,value2);
-            pst.setString(3,value3);
-            pst.setString(3,value4);
-            pst.execute();
-            System.out.println("INSERT CORRECT");
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("INSERT FAIL");
-        }
-
     }
 
 

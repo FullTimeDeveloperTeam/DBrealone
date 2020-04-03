@@ -68,8 +68,7 @@ public class LoginViewController extends Component {
                     FXMLLoader loader = new FXMLLoader();
                     String idToName = idemp.getText();
                     Pane root = (Pane) loader.load(this.getClass().getResource("../expressfxml/NameView.fxml").openStream());
-                    NameViewController Controller =loader.<NameViewController>getController();
-                    Controller.conTest(idToName);
+
                     Scene scene = new Scene(root);
                     primaryStage.setScene(scene);
                     primaryStage.show();

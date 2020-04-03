@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+
+<StackPane fx:id="stackpane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="express.expressfxml.LoginViewController">
+   <children>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <Label layoutX="247.0" layoutY="73.0" text="LOGIN เข้าเวร" />
+            <TextField fx:id="idemp" layoutX="300.0" layoutY="134.0" promptText="ID" />
+            <Label layoutX="247.0" layoutY="138.0" text="ID" />
+            <Button fx:id="confirmBtn" layoutX="335.0" layoutY="230.0" mnemonicParsing="false" onAction="#confirmBtn" text="Confirm" />
+            <Button fx:id="backBth" layoutX="113.0" layoutY="302.0" mnemonicParsing="false" onAction="#backBtn" text="BACK" />
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

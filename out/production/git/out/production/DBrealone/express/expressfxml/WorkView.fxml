@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="39.0" layoutY="55.0" text="วันที่" />
+      <Label layoutX="233.0" layoutY="55.0" text="ตู้" />
+      <ChoiceBox layoutX="67.0" layoutY="51.0" prefWidth="150.0" />
+      <ChoiceBox layoutX="247.0" layoutY="51.0" prefWidth="150.0" />
+      <TextField layoutX="437.0" layoutY="51.0" promptText="Search" />
+      <ChoiceBox layoutX="67.0" layoutY="144.0" prefWidth="150.0" />
+      <Label layoutX="116.0" layoutY="126.0" text="ประเภทรถ" />
+      <Button layoutX="59.0" layoutY="252.0" mnemonicParsing="false" text="OK" />
+      <Button layoutX="166.0" layoutY="252.0" mnemonicParsing="false" text="BACK" />
+      <TableView layoutX="297.0" layoutY="135.0" prefHeight="200.0" prefWidth="226.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="ID" />
+          <TableColumn prefWidth="75.0" text="ตู้" />
+            <TableColumn prefWidth="75.0" text="วันที่" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="express.expressfxml.WorkSelectController">
+   <children>
+      <DatePicker fx:id="dateToChoose" layoutX="139.0" layoutY="148.0" />
+      <Button fx:id="confirm" layoutX="139.0" layoutY="306.0" mnemonicParsing="false" onAction="#conBtn" text="CONFIRM">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

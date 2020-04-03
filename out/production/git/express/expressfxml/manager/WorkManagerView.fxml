@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="express.expressfxml.manager.WorkManaagerViewController">
+   <children>
+      <Label layoutX="650.0" layoutY="387.0" text="ID" />
+      <Label layoutX="489.0" layoutY="438.0" text="เวร" />
+      <Label layoutX="492.0" layoutY="486.0" text="ตู้" />
+      <Button fx:id="finish" layoutX="898.0" layoutY="624.0" mnemonicParsing="false" onAction="#confirmBtn" prefHeight="51.0" prefWidth="78.0" text="Finish" />
+      <Button fx:id="back" layoutX="29.0" layoutY="640.0" mnemonicParsing="false" onAction="#backBtn" prefHeight="34.0" prefWidth="62.0" text="Back" />
+      <Button layoutX="472.0" layoutY="535.0" mnemonicParsing="false" onAction="#clearWorkBtn" prefHeight="26.0" prefWidth="62.0" text="Clear" />
+      <TextField fx:id="nameText" layoutX="251.0" layoutY="383.0" prefHeight="26.0" prefWidth="144.0" promptText="NAME" />
+      <Label layoutX="647.0" layoutY="438.0" text="วันที่" />
+      <TextField fx:id="idText" layoutX="251.0" layoutY="347.0" prefHeight="26.0" prefWidth="144.0" promptText="ID" />
+      <Accordion layoutX="268.0" layoutY="14.0" />
+      <TableView fx:id="tableWork" layoutX="477.0" layoutY="49.0" prefHeight="278.0" prefWidth="490.0">
+        <columns>
+            <TableColumn fx:id="tableColWork_id" prefWidth="74.4000244140625" text="WORKID" />
+          <TableColumn fx:id="tableColWorkemp_id" prefWidth="58.4000244140625" text="ID" />
+          <TableColumn fx:id="tableColWork_name" prefWidth="91.20001220703125" text="NAME" />
+            <TableColumn fx:id="tableColWork_duty" prefWidth="72.79998779296875" text="DUTY" />
+            <TableColumn fx:id="tableColWork_box" prefWidth="60.79998779296875" text="BOX" />
+            <TableColumn fx:id="tableColWork_date" prefWidth="129.60001220703123" text="DATE" />
+        </columns>
+      </TableView>
+      <Accordion layoutX="113.0" layoutY="-23.0" />
+      <ChoiceBox fx:id="dutyChoice" layoutX="515.0" layoutY="434.0" prefHeight="26.0" prefWidth="87.0" />
+      <ChoiceBox fx:id="boxChoice" layoutX="515.0" layoutY="482.0" prefHeight="26.0" prefWidth="87.0" />
+      <DatePicker fx:id="dateChoice" layoutX="685.0" layoutY="434.0" prefHeight="26.0" prefWidth="134.0" />
+      <ComboBox fx:id="idCombo" layoutX="685.0" layoutY="383.0" prefHeight="26.0" prefWidth="87.0" />
+      <Button layoutX="707.0" layoutY="531.0" mnemonicParsing="false" onAction="#updateWorkBtn" prefHeight="34.0" prefWidth="72.0" text="Update" />
+      <Button layoutX="359.0" layoutY="470.0" mnemonicParsing="false" onAction="#insertEmpBtn" prefHeight="42.0" prefWidth="78.0" text="Add" />
+      <Line endX="-100.0" endY="-105.39999389648438" fill="#c7c3c3" layoutX="313.0" layoutY="425.0" smooth="false" startX="-100.00001525878906" startY="37.600006103515625" stroke="#c5c1c1" strokeWidth="2.0" />
+      <ComboBox fx:id="idCombo1" layoutX="47.0" layoutY="347.0" prefHeight="26.0" prefWidth="106.0" />
+      <Button layoutX="113.0" layoutY="409.0" mnemonicParsing="false" onAction="#deleteEmpBtn" prefHeight="26.0" prefWidth="71.0" text="Delete" />
+      <Text layoutX="485.0" layoutY="365.0" strokeType="OUTSIDE" strokeWidth="0.0" text="จัดการงานพนักงาน" />
+      <Text layoutX="251.0" layoutY="334.0" strokeType="OUTSIDE" strokeWidth="0.0" text="เพิ่มชื่อพนักงาน" />
+      <Text layoutX="47.0" layoutY="332.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ลบชื่อพนักงาน" />
+      <Line endX="-100.0" endY="-105.39999389648438" fill="#c7c3c3" layoutX="554.0" layoutY="140.0" smooth="false" startX="-100.0" startY="517.7999877929688" stroke="#c5c1c1" strokeWidth="2.0" />
+      <TableView fx:id="tableEmp" layoutX="47.0" layoutY="49.0" prefHeight="200.0" prefWidth="380.0">
+        <columns>
+          <TableColumn fx:id="tableColEmp_id" prefWidth="73.60000610351562" text="ID" />
+          <TableColumn fx:id="tableColEmp_name" prefWidth="108.79998779296875" text="NAME" />
+            <TableColumn fx:id="tableColEmp_phone" prefWidth="196.8000030517578" text="PHONE" />
+        </columns>
+      </TableView>
+      <TextField fx:id="phoneText" layoutX="251.0" layoutY="421.0" prefHeight="26.0" prefWidth="144.0" promptText="PHONE" />
+      <Button layoutX="220.0" layoutY="482.0" mnemonicParsing="false" onAction="#clearEmpBtn" prefHeight="26.0" prefWidth="62.0" text="Clear" />
+      <TextField fx:id="workidText" layoutX="517.0" layoutY="383.0" prefHeight="26.0" prefWidth="87.0" promptText="WORKID" />
+      <Button layoutX="797.0" layoutY="523.0" mnemonicParsing="false" onAction="#insertWorkBtn" prefHeight="42.0" prefWidth="87.0" text="Add Work" />
+      <Button layoutX="472.0" layoutY="589.0" mnemonicParsing="false" onAction="#deleteWorkBtn" prefHeight="34.0" prefWidth="117.0" text="Delete Work" />
+      <Button layoutX="359.0" layoutY="531.0" mnemonicParsing="false" onAction="#updateEmpBtn" prefHeight="34.0" prefWidth="72.0" text="Update" />
+   </children>
+</AnchorPane>

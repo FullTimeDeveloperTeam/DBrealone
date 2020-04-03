@@ -138,7 +138,7 @@ public class WorkViewController {
         tableColPrice.getTableView().getItems().clear();
     }
 
-    public void insertFourCar(ActionEvent event) throws SQLException {
+    public void insertFourCar() throws SQLException {
         value1 = getSpaceID();
         value3 = getWorkID();
         String value4 = "1";
@@ -146,6 +146,7 @@ public class WorkViewController {
             String sql = "INSERT INTO summarize  VALUES (?,?,?,? )";
             con = ConnectDb.connectDB();
             pst =con.prepareStatement(sql);
+
             pst.setString(1,value1);
             pst.setString(2,value2);
             pst.setString(3,value3);
@@ -155,11 +156,15 @@ public class WorkViewController {
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("INSERT FAIL");
+            System.out.println(value1+" 1");
+            System.out.println(value2+" 2");
+            System.out.println(value3+" 3");
+            System.out.println(value4+" 4");
         }
         showTableCar();
     }
 
-    public void insertSixCar(ActionEvent event) throws SQLException {
+    public void insertSixCar() throws SQLException {
         value1 = getSpaceID();
         value3 = getWorkID();
         String value4 = "2";
@@ -181,7 +186,7 @@ public class WorkViewController {
         showTableCar();
     }
 
-    public void insertTenCar(ActionEvent event) throws SQLException {
+    public void insertTenCar() throws SQLException {
         value1 = getSpaceID();
         value3 = getWorkID();
         String value4 = "3";
@@ -204,7 +209,7 @@ public class WorkViewController {
 
     }
 
-    public void insertSpecialCar(ActionEvent event) throws SQLException {
+    public void insertSpecialCar() throws SQLException {
         value1 = getSpaceID();
         value3 = getWorkID();
         String value4 = "4";

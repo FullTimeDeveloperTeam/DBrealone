@@ -95,7 +95,7 @@ public class concludeViewController {
                 "FROM summarize t1\n" +
                 "INNER JOIN ticket t2 \n" +
                 "ON t1.ticket_id=t2.ticket_id\n" +
-                "WHERE t2.Type_ticket ='10wheel'";
+                "WHERE t2.Type_ticket ='10wheel'" ;
         try {
             con = ConnectDb.connectDB();
             ResultSet rs = con.createStatement().executeQuery(sql);

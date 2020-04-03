@@ -29,15 +29,15 @@ public class SumarizeViewController {
     @FXML
     TableView tableViewSum;
     @FXML
-    TableColumn tableColumnDate;
-    @FXML TableColumn tableColumnId;
-    @FXML TableColumn tableColumnDuty;
-    @FXML TableColumn tableColumnBox;
-    @FXML TableColumn tableColumnFour;
-    @FXML TableColumn tableColumnSix;
-    @FXML TableColumn tableColumnTen;
-    @FXML TableColumn tableColumnSpecial;
-    @FXML TableColumn tableColumnSum;
+    TableColumn<DetailSummary,String> tableColumnDate;
+    @FXML TableColumn<DetailSummary,String> tableColumnId;
+    @FXML TableColumn<DetailSummary,String> tableColumnDuty;
+    @FXML TableColumn<DetailSummary,String> tableColumnBox;
+    @FXML TableColumn<DetailSummary,String> tableColumnFour;
+    @FXML TableColumn<DetailSummary,String> tableColumnSix;
+    @FXML TableColumn<DetailSummary,String> tableColumnTen;
+    @FXML TableColumn<DetailSummary,String> tableColumnSpecial;
+    @FXML TableColumn<DetailSummary,String> tableColumnSum;
 
     public  void backBtn(ActionEvent event) throws IOException {
         Stage primaryStage = new Stage();

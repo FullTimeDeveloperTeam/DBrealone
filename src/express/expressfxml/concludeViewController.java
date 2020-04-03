@@ -43,7 +43,7 @@ public class concludeViewController {
         try{
             ((Node)event.getSource()).getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
-            Pane root = (Pane)loader.load(this.getClass().getResource("../expressfxml/NameView.fxml").openStream());
+            Pane root = (Pane)loader.load(this.getClass().getResource("../expressfxml/scheduleView.fxml").openStream());
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
             primaryStage.show();

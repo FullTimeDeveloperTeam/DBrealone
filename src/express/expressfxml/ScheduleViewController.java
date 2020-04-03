@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -34,6 +35,8 @@ public class ScheduleViewController {
 
     @FXML
     Button backBtn, workBtn, summaryBtn;
+    @FXML
+    ComboBox idCombo;
 
     private Connection con = null;
     private ResultSet rs = null;
@@ -41,6 +44,7 @@ public class ScheduleViewController {
 
     public void initialize() throws SQLException {
         showSchedule();
+        showCombo();
     }
     public void workBtn(ActionEvent event) {
         Stage primaryStage = new Stage();
@@ -90,7 +94,7 @@ public class ScheduleViewController {
     public void showSchedule() throws SQLException {
         try {
             con = ConnectDb.connectDB();
-            rs = con.createStatement().executeQuery("SELECT emp_id ,work_duty,work_box,work_date FROM work_schedule where emp_id ='101'");
+            rs = con.createStatement().executeQuery("SELECT emp_id ,work_duty,work_box,work_date FROM work_schedule ");
             while (rs.next()) {
                 observableList.add(new DetailNameView(rs.getString("work_duty"), rs.getString("work_box"), rs.getString("work_date")));
 
@@ -115,5 +119,17 @@ public class ScheduleViewController {
 
     }
 
+    public void showCombo(){
+        try{
+            con = ConnectDb.connectDB();
+            pst = con.prepareStatement("SELECT emp_id FROM employee");
+            rs = pst.executeQuery();
+            while (rs.next()){
+                idCombo.getItems().add(rs.getString("emp_id"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 }

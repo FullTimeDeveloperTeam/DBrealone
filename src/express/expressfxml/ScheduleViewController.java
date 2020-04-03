@@ -43,7 +43,7 @@ public class ScheduleViewController {
     private PreparedStatement pst = null;
 
     public void initialize() throws SQLException {
-        showSchedule();
+
         showCombo();
     }
     public void workBtn(ActionEvent event) {

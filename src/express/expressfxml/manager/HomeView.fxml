@@ -6,14 +6,14 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="express.expressfxml.manager.HomeViewController">
    <children>
-      <Button fx:id="empTable" layoutX="165.0" layoutY="147.0" mnemonicParsing="false" onAction="#empTableBtn" prefHeight="52.0" prefWidth="252.0" text="Work Manage Employee Schedule">
+      <Button fx:id="empTable" layoutX="174.0" layoutY="144.0" mnemonicParsing="false" onAction="#empTableBtn" prefHeight="52.0" prefWidth="252.0" text="Work Manage Employee Schedule">
          <font>
             <Font size="14.0" />
          </font></Button>
-      <Button fx:id="conclude" layoutX="221.0" layoutY="260.0" mnemonicParsing="false" onAction="#concludeBtn" prefHeight="52.0" prefWidth="158.0" text="summary table">
+      <Button fx:id="conclude" layoutX="220.0" layoutY="250.0" mnemonicParsing="false" onAction="#concludeBtn" prefHeight="52.0" prefWidth="158.0" text="Summary Table">
          <font>
             <Font size="15.0" />
          </font></Button>
-      <Button fx:id="logout" layoutX="476.0" layoutY="395.0" mnemonicParsing="false" onAction="#logoutBtn" prefHeight="39.0" prefWidth="72.0" text="Logout" />
+      <Button fx:id="logout" layoutX="497.0" layoutY="426.0" mnemonicParsing="false" onAction="#logoutBtn" prefHeight="39.0" prefWidth="72.0" text="Logout" />
    </children>
 </AnchorPane>

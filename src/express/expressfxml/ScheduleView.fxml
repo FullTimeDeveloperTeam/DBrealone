@@ -17,7 +17,7 @@
       </TableView>
       <Button fx:id="workBtn" layoutX="460.0" layoutY="328.0" mnemonicParsing="false" onAction="#workBtn" prefHeight="55.0" prefWidth="114.0" text="เข้าสู่การทำงาน" />
       <Button fx:id="summaryBtn" layoutX="500.0" layoutY="224.0" mnemonicParsing="false" onAction="#summaryBtn" prefHeight="62.0" prefWidth="67.0" text="สรุปงาน" />
-      <Button fx:id="backBtn" layoutX="24.0" layoutY="343.0" mnemonicParsing="false" onAction="#outBtn" prefHeight="40.0" prefWidth="57.0" text="Logout" />
+      <Button fx:id="backBtn" layoutX="24.0" layoutY="343.0" mnemonicParsing="false" onAction="#outBtn" prefHeight="40.0" prefWidth="82.0" text="Logout" />
       <Button fx:id="confirm" layoutX="274.0" layoutY="328.0" mnemonicParsing="false" onAction="#okBtn" prefHeight="34.0" prefWidth="81.0" text="Confirm" />
       <TextField fx:id="idText" layoutX="158.0" layoutY="287.0" promptText="EMPLOYEE ID" />
    </children>

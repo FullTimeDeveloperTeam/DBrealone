@@ -43,17 +43,26 @@ public class concludeViewController {
         showLabelDefault();
     }
 
-    public void showAllLabel() throws SQLException {
-        value2 = idemp.getText();
-        value = dateemp.getValue().toString();
-        value3 = getWorkID();
-        showLabelFour();
-        showLabelSix();
-        showLabelTen();
-        showLabelSpecial();
-        showLabelPriceSum();
-        showLabelTicketAll();
+    private Boolean checkNum=false;
+    public static boolean isNummeric(String str){
+        return ((!str.equals("")))&&((str != null))&&(str.matches("^[0-9]{1,10}$"));//ต้องเป้น ตัวเลจ 10 ตัว
+    }
 
+    public void showAllLabel() throws SQLException {
+        checkNum = isNummeric(idemp.getText());
+        if (!(checkNum) || idemp.getText().isEmpty() || dateemp.getEditor().getText().isEmpty()){
+            alert();
+        }else{
+            value2 = idemp.getText();
+            value = dateemp.getValue().toString();
+            value3 = getWorkID();
+            showLabelFour();
+            showLabelSix();
+            showLabelTen();
+            showLabelSpecial();
+            showLabelPriceSum();
+            showLabelTicketAll();
+        }
     }
 
     public String getWorkID()throws SQLException{
@@ -227,5 +236,13 @@ public class concludeViewController {
             e.printStackTrace();
         }
     }*/
+
+    public void alert(){
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setHeaderText("");
+        alert.setTitle("WARNING");
+        alert.setContentText("Please fill out this form completely");
+        alert.showAndWait();
+    }
 
 }

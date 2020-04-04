@@ -8,20 +8,20 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="express.expressfxml.manager.RegisterViewController">
    <children>
-      <TextField fx:id="password" layoutX="256.0" layoutY="125.0" promptText="Password" />
-      <TextField fx:id="username" layoutX="256.0" layoutY="87.0" promptText="Username" />
-      <TextField fx:id="lname" layoutX="256.0" layoutY="200.0" promptText="lastname" />
-      <TextField fx:id="fname" layoutX="256.0" layoutY="161.0" promptText="firstname" />
-      <Button fx:id="back" layoutX="40.0" layoutY="349.0" mnemonicParsing="false" onAction="#backBtn" text="Back" />
-      <Button fx:id="insert" layoutX="488.0" layoutY="294.0" mnemonicParsing="false" onAction="#confirmBtn" text="Confirm" />
-      <Button fx:id="clear" layoutX="592.0" layoutY="294.0" mnemonicParsing="false" onAction="#clear" text="Clear" />
-      <TextField fx:id="phone" layoutX="256.0" layoutY="239.0" promptText="Phone" />
-      <Label layoutX="60.0" layoutY="28.0" text="Register">
+      <TextField fx:id="password" layoutX="174.0" layoutY="125.0" promptText="Password" />
+      <TextField fx:id="username" layoutX="174.0" layoutY="87.0" promptText="Username" />
+      <TextField fx:id="lname" layoutX="174.0" layoutY="200.0" promptText="Lastname" />
+      <TextField fx:id="fname" layoutX="174.0" layoutY="161.0" promptText="Firstname" />
+      <Button fx:id="back" layoutX="30.0" layoutY="340.0" mnemonicParsing="false" onAction="#backBtn" prefHeight="36.0" prefWidth="59.0" text="Back" />
+      <Button fx:id="insert" layoutX="598.0" layoutY="340.0" mnemonicParsing="false" onAction="#confirmBtn" prefHeight="36.0" prefWidth="74.0" text="Confirm" />
+      <Button fx:id="clear" layoutX="136.0" layoutY="281.0" mnemonicParsing="false" onAction="#clear" text="Clear" />
+      <TextField fx:id="phone" layoutX="174.0" layoutY="239.0" promptText="Phone" />
+      <Label layoutX="68.0" layoutY="30.0" text="Register">
          <font>
             <Font size="25.0" />
          </font></Label>
-      <Label layoutX="418.0" layoutY="91.0" text="(กำหนด Usernameได้ ตั้งแต่ 3-20ตัว)" />
-      <Label layoutX="418.0" layoutY="129.0" text="(กำหนดpasswordเป็นตัวอักษรและตัวเลขไม่เกิน10ตัว)" />
-      <Label layoutX="428.0" layoutY="243.0" text="(หมายเลขโทรศัพท์ 10 หลัก)" />
+      <Label layoutX="365.0" layoutY="91.0" text="(กำหนด Usernameได้ ตั้งแต่ 3-20ตัว)" textFill="#9f9a9a" />
+      <Label layoutX="365.0" layoutY="129.0" text="(กำหนดpasswordเป็นตัวอักษรและตัวเลขไม่เกิน10ตัว)" textFill="#9f9a9a" />
+      <Label layoutX="365.0" layoutY="243.0" text="(หมายเลขโทรศัพท์ 10 หลัก)" textFill="#9f9a9a" />
    </children>
 </AnchorPane>

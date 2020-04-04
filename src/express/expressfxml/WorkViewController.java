@@ -94,11 +94,21 @@ public class WorkViewController {
         return value1;
     }
 
+    private Boolean checkNum=false;
+    public static boolean isNummeric(String str){
+        return ((!str.equals("")))&&((str != null))&&(str.matches("^[0-9]{1,10}$"));//ต้องเป้น ตัวเลจ 10 ตัว
+    }
+
     public void oKBtn(){
-        value2 = empIdTextField.getText();
-        value = dateAddTable.getValue().toString();
-        clearTable();
-        showTableCar();
+        checkNum = isNummeric(empIdTextField.getText());
+        if(!(checkNum) ||empIdTextField.getText().isEmpty() || dateAddTable.getEditor().getText().isEmpty()){
+            alert();
+        }else {
+            value2 = empIdTextField.getText();
+            value = dateAddTable.getValue().toString();
+            clearTable();
+            showTableCar();
+        }
     }
 
     public void showTableCar(){
@@ -259,6 +269,14 @@ public class WorkViewController {
         }catch ( IOException var6){
             var6.printStackTrace();
         }
+    }
+
+    public void alert(){
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setHeaderText("");
+        alert.setTitle("WARNING");
+        alert.setContentText("Please fill out this form completely");
+        alert.showAndWait();
     }
 
 

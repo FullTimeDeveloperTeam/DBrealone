@@ -8,10 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -37,7 +34,11 @@ public class ScheduleViewController {
     Button backBtn, workBtn, summaryBtn;
     @FXML
     ComboBox idCombo;
+    @FXML
+    TextField idText;
 
+    String value ="";
+    String value1 = "";
     private Connection con = null;
     private ResultSet rs = null;
     private PreparedStatement pst = null;
@@ -89,12 +90,25 @@ public class ScheduleViewController {
         }
     }
 
+    public void okBtn(){
+        value = idText.getText();
+        clearTable();
+        showSchedule();
+    }
+
+    public void clearTable(){
+        tableColumnDate.getTableView().getItems().clear();
+        tableColumnDuty.getTableView().getItems().clear();
+        tableColumnBox.getTableView().getItems().clear();
+    }
+
+
     ObservableList<DetailNameView> observableList = FXCollections.observableArrayList();
 
-    public void showSchedule() throws SQLException {
+    public void showSchedule()  {
         try {
             con = ConnectDb.connectDB();
-            rs = con.createStatement().executeQuery("SELECT emp_id ,work_duty,work_box,work_date FROM work_schedule ");
+            rs = con.createStatement().executeQuery("SELECT emp_id ,work_duty,work_box,work_date FROM work_schedule WHERE emp_id ='"+value+"'");
             while (rs.next()) {
                 observableList.add(new DetailNameView(rs.getString("work_duty"), rs.getString("work_box"), rs.getString("work_date")));
 

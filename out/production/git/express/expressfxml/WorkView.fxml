@@ -32,7 +32,10 @@
          </font></Button>
       <DatePicker fx:id="dateAddTable" layoutX="338.0" layoutY="380.0" promptText="เลือกวันที่" />
       <Line endX="-100.0" endY="521.0" layoutX="677.0" layoutY="55.0" startX="-100.0" startY="-28.60000228881836" />
-      <Text layoutX="664.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ประเภทรถ" />
+      <Text layoutX="633.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type of Vehicle">
+         <font>
+            <Font size="16.0" />
+         </font></Text>
       <TextField fx:id="empIdTextField" layoutX="104.0" layoutY="380.0" promptText="EmpID" />
    </children>
 </AnchorPane>

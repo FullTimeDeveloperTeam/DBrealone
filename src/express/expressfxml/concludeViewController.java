@@ -8,10 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -29,13 +26,15 @@ public class concludeViewController {
     @FXML
     DatePicker dateemp;
     @FXML
-    ComboBox idemp;
+    TextField idemp;
     @FXML
     Button back,confirmBtn;
 
     @FXML
     Label fourWheel,sixWheel,tenWheel,ticketFour,ticketSix,ticketTen,priceSum,ticketAll;
 
+    String value = "";
+    String value1 = "";
 
     public void initialize() throws SQLException{
         showLabelFour();
@@ -43,7 +42,7 @@ public class concludeViewController {
         showLabelTen();
         showLabelPriceSum();
         showLabelTicketAll();
-        showCombo();
+        //showCombo();
     }
     public void backBtn(ActionEvent event) throws IOException {
         Stage primaryStage = new Stage();
@@ -65,7 +64,7 @@ public class concludeViewController {
                 "FROM summarize t1\n" +
                 "INNER JOIN ticket t2 \n" +
                 "ON t1.ticket_id=t2.ticket_id\n" +
-                "WHERE t2.Type_ticket ='4wheel'";
+                "WHERE t2.Type_ticket ='4wheel' and t1.emp_id = '"+value+"'";
         try {
             con = ConnectDb.connectDB();
             ResultSet rs = con.createStatement().executeQuery(sql);
@@ -149,7 +148,7 @@ public class concludeViewController {
         }
     }
 
-    public void showCombo(){
+    /*public void showCombo(){
         try {
             con = ConnectDb.connectDB();
             pst = con.prepareStatement("SELECT emp_id FROM employee");
@@ -160,11 +159,9 @@ public class concludeViewController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    }
+    }*/
     public void ConfirmBtn(){
         try{
-            String value = idemp.getValue().toString();
-            String value1 = dateemp.getValue().toString();
             con = ConnectDb.connectDB();
             ResultSet rs = con.createStatement().executeQuery("SELECT emp_id,work_date from ");
             while (rs.next()){

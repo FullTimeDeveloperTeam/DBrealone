@@ -9,17 +9,21 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import javax.swing.*;
+import java.awt.*;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class ScheduleViewController {
+public class ScheduleViewController extends Component {
     @FXML
     TableView<DetailNameView> scheduleTable;
     @FXML
@@ -36,7 +40,7 @@ public class ScheduleViewController {
     ComboBox idCombo;
     @FXML
     TextField idText;
-
+    @FXML Button logout;
     String value ="";
     String value1 = "";
     private Connection con = null;
@@ -89,6 +93,19 @@ public class ScheduleViewController {
         }
     }
 
+    public void logoutBtn(ActionEvent event) throws IOException {
+        Stage primaryStage = new Stage();
+        try {
+            ((Node) event.getSource()).getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            Pane root = (Pane) loader.load(this.getClass().getResource("../expressfxml/FirstView.fxml").openStream());
+            Scene scene = new Scene(root);
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (IOException var6) {
+            var6.printStackTrace();
+        }
+    }
     public void summaryBtn(ActionEvent event) throws IOException {
         Stage primaryStage = new Stage();
         try {
@@ -102,11 +119,21 @@ public class ScheduleViewController {
             var6.printStackTrace();
         }
     }
-
-    public void okBtn(){
+    private Boolean checkNum=false;
+    public static boolean isNummeric(String str){
+        return ((!str.equals("")))&&((str != null))&&(str.matches("^[0-9]{1,10}$"));//ต้องเป้น ตัวเลจ 10 ตัว
+    }
+    public void okBtn() {
         value = idText.getText();
-        clearTable();
-        showSchedule();
+        checkNum = isNummeric(idText.getText());
+        /*if (idText.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this,"กรุณากรอกข้อมูล","แจ้งเตือน",JOptionPane.INFORMATION_MESSAGE);
+        }*/  if (!(checkNum) || idText.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this,"กรุณาใส่ ID","แจ้งเตือน",JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            clearTable();
+            showSchedule();
+        }
     }
 
     public void clearTable(){

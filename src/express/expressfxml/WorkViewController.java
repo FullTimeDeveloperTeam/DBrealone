@@ -27,7 +27,7 @@ public class WorkViewController {
     private Connection con = null;
     private ResultSet rs = null;
     private PreparedStatement pst = null;
-    int countCar = 0;
+
     String value ="";
     String value1 = "";
     String value2 = "";
@@ -51,10 +51,10 @@ public class WorkViewController {
     public WorkViewController() throws SQLException {
     }
 
-    public int getCountCar(){
-        countCar++;
-        return countCar;
-    }
+//    public int getCountCar(){
+//        countCar++;
+//        return countCar;
+//    }
     public String getWorkID()throws SQLException{
         try{
             con = ConnectDb.connectDB();
@@ -84,7 +84,7 @@ public class WorkViewController {
                 nummax++;
                 value1 = String.valueOf(nummax);
             }
-            nummax++;
+//            nummax++;
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -99,6 +99,7 @@ public class WorkViewController {
     }
 
     public void showTableCar(){
+        int countCar = 0;
         try{
             con = ConnectDb.connectDB();
             String sql = "SELECT t2.Type_ticket as ticket, t2.Price as price,t3.work_date as date_n \n" +

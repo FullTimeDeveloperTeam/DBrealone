@@ -129,7 +129,7 @@ public class ScheduleViewController extends Component {
         /*if (idText.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this,"กรุณากรอกข้อมูล","แจ้งเตือน",JOptionPane.INFORMATION_MESSAGE);
         }*/  if (!(checkNum) || idText.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this,"กรุณาใส่ ID","แจ้งเตือน",JOptionPane.INFORMATION_MESSAGE);
+            alert();
         } else {
             clearTable();
             showSchedule();
@@ -180,6 +180,12 @@ public class ScheduleViewController extends Component {
         }
     }
 
-
+    public void alert(){
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setHeaderText("");
+        alert.setTitle("WARNING");
+        alert.setContentText("Please fill out this form completely");
+        alert.showAndWait();
+    }
 
 }

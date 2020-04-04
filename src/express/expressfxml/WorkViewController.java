@@ -9,18 +9,21 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import javax.swing.*;
+import java.awt.*;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class WorkViewController {
+public class WorkViewController extends Component {
     @FXML Button okBtn, backBtn,fourWheel,sixWheel,tenWheel,specialWheel;
     @FXML
     DatePicker dateAddTable;
@@ -244,6 +247,7 @@ public class WorkViewController {
 
 
     public void confirmBtn(ActionEvent event) throws IOException {
+        JOptionPane.showMessageDialog(this,"ทำงานเสร็จสิ้น","แจ้งเตือน",JOptionPane.INFORMATION_MESSAGE);
         Stage primaryStage = new Stage();
         try{
             ((Node)event.getSource()).getScene().getWindow().hide();

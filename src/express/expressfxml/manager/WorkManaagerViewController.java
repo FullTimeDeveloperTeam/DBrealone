@@ -111,8 +111,14 @@ public class WorkManaagerViewController extends Component {
 
     }
 
+    public static boolean isNummeric(String str){
+        return ((!str.equals("")))&&((str != null))&&(str.matches("^[0-9]{10}$"));//ต้องเป้น ตัวเลจ 10 ตัว
+    }
+
     public void insertEmpBtn(ActionEvent event) throws SQLException {
-        if (idText.getText().isEmpty() || nameText.getText().isEmpty() || phoneText.getText().isEmpty()){
+        Boolean id = isNummeric(idText.getText());
+        Boolean num =isNummeric(phoneText.getText());
+        if (!(num) || !(id) || idText.getText().isEmpty() || nameText.getText().isEmpty() || phoneText.getText().isEmpty()){
             alert();
         }else {
             try{
@@ -184,6 +190,7 @@ public class WorkManaagerViewController extends Component {
                 pst =con.prepareStatement(sql);
                 pst.execute();
                 JOptionPane.showMessageDialog(this, "ลบข้อมูลเสร็จสิ้น", "บันทึก", 1);
+                System.out.println(value1);
                 System.out.println("DELETE CORRECT");
             } catch (Exception e) {
                 e.printStackTrace();
@@ -340,6 +347,7 @@ public class WorkManaagerViewController extends Component {
     public void showChoice(){
         dutyChoice.getItems().add(0,"Morning");
         dutyChoice.getItems().add(1,"Evening");
+        dutyChoice.getItems().add(1,"Night");
         boxChoice.getItems().add(0,"1");
         boxChoice.getItems().add(1,"2");
     }

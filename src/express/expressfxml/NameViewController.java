@@ -111,6 +111,7 @@ public class NameViewController implements Initializable {
             FXMLLoader loader = new FXMLLoader();
             Pane root = (Pane) loader.load(this.getClass().getResource("../expressfxml/concludeView.fxml").openStream());
             Scene scene = new Scene(root);
+            primaryStage.setScene(new Scene(root, 700, 400));
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (IOException var6) {

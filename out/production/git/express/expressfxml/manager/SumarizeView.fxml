@@ -8,18 +8,17 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="express.expressfxml.manager.SumarizeViewController">
    <children>
-      <TableView fx:id="tableViewSum" layoutY="68.0" prefHeight="252.0" prefWidth="800.0">
+      <TableView fx:id="tableViewSum" layoutX="86.0" layoutY="90.0" prefHeight="252.0" prefWidth="626.0">
         <columns>
             <TableColumn fx:id="tableColumnDate" prefWidth="110.4000244140625" text="วันที่" />
           <TableColumn fx:id="tableColumnId" prefWidth="77.60003662109375" text="id" />
-            <TableColumn fx:id="tableColumnFour" prefWidth="105.5999755859375" text="4 ล้อ" />
-            <TableColumn fx:id="tableColumnSix" prefWidth="93.5999755859375" text="6 ล้อ" />
-            <TableColumn fx:id="tableColumnTen" prefWidth="125.60003662109375" text="10 ล้อ" />
-            <TableColumn fx:id="tableColumnSpecial" prefWidth="130.39996337890625" text="รถกรณีพิเศษ" />
-            <TableColumn fx:id="tableColumnSum" minWidth="0.0" prefWidth="152.800048828125" text="ราคารวม" />
+            <TableColumn fx:id="tableColumnBox" prefWidth="75.0" text="ตู้" />
+            <TableColumn fx:id="tableColumnDuty" prefWidth="75.0" text="เวร" />
+            <TableColumn fx:id="tableColumnSumVehicle" prefWidth="130.39996337890625" text="รถทังหมด" />
+            <TableColumn fx:id="tableColumnSumPrice" minWidth="0.0" prefWidth="152.800048828125" text="เงินรวม" />
         </columns>
       </TableView>
-      <Button fx:id="back" layoutX="62.0" layoutY="356.0" mnemonicParsing="false" onAction="#backBtn" text="back" />
-      <DatePicker layoutX="225.0" layoutY="350.0" promptText="CHOOSE DATE" />
+      <Button fx:id="back" layoutX="14.0" layoutY="452.0" mnemonicParsing="false" onAction="#backBtn" prefHeight="34.0" prefWidth="55.0" text="back" />
+      <DatePicker layoutX="462.0" layoutY="376.0" promptText="CHOOSE DATE" />
    </children>
 </AnchorPane>

@@ -43,10 +43,23 @@ public class ScheduleViewController {
     private ResultSet rs = null;
     private PreparedStatement pst = null;
 
-    public void initialize() throws SQLException {
+    ObservableList<DetailNameView> observableList = FXCollections.observableArrayList();
+    ObservableList<DetailNameView> observableListTmp = FXCollections.observableArrayList();
 
-        showCombo();
+    public void initialize() throws SQLException {
+        showTableViewDefault();
+//        showCombo();
     }
+
+    public void showTableViewDefault() {
+        observableListTmp.add(new DetailNameView("","",""));
+        tableColumnDate.setCellValueFactory(new PropertyValueFactory<>("date"));
+        tableColumnBox.setCellValueFactory(new PropertyValueFactory<>("box"));
+        tableColumnDuty.setCellValueFactory(new PropertyValueFactory<>("duty"));
+        scheduleTable.setItems(null);
+        scheduleTable.setItems(observableListTmp);
+    }
+
     public void workBtn(ActionEvent event) {
         Stage primaryStage = new Stage();
         try {
@@ -103,23 +116,16 @@ public class ScheduleViewController {
     }
 
 
-    ObservableList<DetailNameView> observableList = FXCollections.observableArrayList();
-
     public void showSchedule()  {
         try {
             con = ConnectDb.connectDB();
-            rs = con.createStatement().executeQuery("SELECT emp_id ,work_duty,work_box,work_date FROM work_schedule WHERE emp_id ='"+value+"'");
+            rs = con.createStatement().executeQuery("SELECT emp_id ,work_duty,work_box,work_date FROM work_schedule WHERE emp_id ='"+value+"' ORDER BY work_date");
             while (rs.next()) {
                 observableList.add(new DetailNameView(rs.getString("work_duty"), rs.getString("work_box"), rs.getString("work_date")));
-
             }
-            String id = rs.getString("emp_id");
-            String duty = rs.getString("work_duty");
-            String box = rs.getString("work_box");
-            String date = rs.getString("work_date");
-
-
+            System.out.println("SHOW CORRECT");
         } catch (SQLException e) {
+            System.out.println("SHOW FAIL");
             e.printStackTrace();
         }
 
@@ -132,6 +138,7 @@ public class ScheduleViewController {
 
 
     }
+
 
     public void showCombo(){
         try{

@@ -31,46 +31,78 @@ public class concludeViewController {
     Button back,confirmBtn;
 
     @FXML
-    Label fourWheel,sixWheel,tenWheel,ticketFour,ticketSix,ticketTen,priceSum,ticketAll;
+    Label fourWheel,sixWheel,tenWheel,Special,ticketFour,ticketSix,ticketTen
+            ,ticketSpecial,priceFour,priceSix,priceTen,priceSum,ticketAll;
 
-    String value = "";
+    String value ="";
     String value1 = "";
+    String value2 = "";
+    String value3 = "";
 
     public void initialize() throws SQLException{
+        showLabelDefault();
+    }
+
+    public void showAllLabel() throws SQLException {
+        value2 = idemp.getText();
+        value = dateemp.getValue().toString();
+        value3 = getWorkID();
         showLabelFour();
         showLabelSix();
         showLabelTen();
+        showLabelSpecial();
         showLabelPriceSum();
         showLabelTicketAll();
-        //showCombo();
-    }
-    public void backBtn(ActionEvent event) throws IOException {
-        Stage primaryStage = new Stage();
-        try{
-            ((Node)event.getSource()).getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            Pane root = (Pane)loader.load(this.getClass().getResource("../expressfxml/scheduleView.fxml").openStream());
-            Scene scene = new Scene(root);
-            primaryStage.setScene(scene);
-            primaryStage.show();
-        }catch ( IOException var6){
-            var6.printStackTrace();
-        }
+
     }
 
-    ObservableList observableList = FXCollections.observableArrayList();
+    public String getWorkID()throws SQLException{
+        try{
+            con = ConnectDb.connectDB();
+            String sql = "SELECT work_id \n" +
+                    "FROM work_schedule \n" +
+                    "WHERE work_date='"+value+"' AND emp_id='"+value2+"'";
+            ResultSet rs = con.createStatement().executeQuery(sql);
+            while (rs.next()){
+                value3 = rs.getString("work_id");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return value3;
+    }
+
+
+    public void showLabelDefault() {
+        fourWheel.setText("0");
+        ticketFour.setText("0");
+        sixWheel.setText("0");
+        Special.setText("0");
+        ticketSix.setText("0");
+        tenWheel.setText("0");
+        ticketTen.setText("0");
+        priceSum.setText("0");
+        ticketAll.setText("0");
+        ticketSpecial.setText("0");
+        priceFour.setText("0");
+        priceSix.setText("0");
+        priceTen.setText("0");
+    }
+
     public void showLabelFour() {
         String sql = "SELECT COUNT(t1.ticket_id) as count_ticket ,SUM(Price) as sum_ticket \n" +
                 "FROM summarize t1\n" +
                 "INNER JOIN ticket t2 \n" +
                 "ON t1.ticket_id=t2.ticket_id\n" +
-                "WHERE t2.Type_ticket ='4wheel' and t1.emp_id = '"+value+"'";
+                "WHERE t1.work_id = '"+value3+"' AND t1.ticket_id = '1'";
         try {
             con = ConnectDb.connectDB();
             ResultSet rs = con.createStatement().executeQuery(sql);
             while (rs.next()){
                 fourWheel.setText(String.valueOf(rs.getInt("count_ticket")));
                 ticketFour.setText(String.valueOf(rs.getInt("count_ticket")));
+                priceFour.setText(String.valueOf(rs.getInt("sum_ticket")));
             }
 
         } catch (Exception e) {
@@ -83,13 +115,14 @@ public class concludeViewController {
                 "FROM summarize t1\n" +
                 "INNER JOIN ticket t2 \n" +
                 "ON t1.ticket_id=t2.ticket_id\n" +
-                "WHERE t2.Type_ticket ='6wheel'";
+                "WHERE t1.work_id = '"+value3+"' AND t1.ticket_id = '2'";
         try{
             con = ConnectDb.connectDB();
             ResultSet rs = con.createStatement().executeQuery(sql);
             while (rs.next()){
                 sixWheel.setText(String.valueOf(rs.getInt("count_ticket")));
                 ticketSix.setText(String.valueOf(rs.getInt("count_ticket")));
+                priceSix.setText(String.valueOf(rs.getInt("sum_ticket")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -101,13 +134,32 @@ public class concludeViewController {
                 "FROM summarize t1\n" +
                 "INNER JOIN ticket t2 \n" +
                 "ON t1.ticket_id=t2.ticket_id\n" +
-                "WHERE t2.Type_ticket ='10wheel'" ;
+                "WHERE t1.work_id = '"+value3+"' AND t1.ticket_id = '3'";
         try {
             con = ConnectDb.connectDB();
             ResultSet rs = con.createStatement().executeQuery(sql);
             while (rs.next()){
                 tenWheel.setText(String.valueOf(rs.getInt("count_ticket")));
                 ticketTen.setText(String.valueOf(rs.getInt("count_ticket")));
+                priceTen.setText(String.valueOf(rs.getInt("sum_ticket")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showLabelSpecial(){
+        String sql = "SELECT COUNT(t1.ticket_id) as count_ticket ,SUM(Price) as sum_ticket \n" +
+                "FROM summarize t1\n" +
+                "INNER JOIN ticket t2 \n" +
+                "ON t1.ticket_id=t2.ticket_id\n" +
+                "WHERE t1.work_id = '"+value3+"' AND t1.ticket_id = '4'";
+        try {
+            con = ConnectDb.connectDB();
+            ResultSet rs = con.createStatement().executeQuery(sql);
+            while (rs.next()){
+                Special.setText(String.valueOf(rs.getInt("count_ticket")));
+                ticketSpecial.setText(String.valueOf(rs.getInt("count_ticket")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -115,12 +167,12 @@ public class concludeViewController {
     }
 
 
-
     public void showLabelPriceSum(){
         String sql = "SELECT COUNT(t1.ticket_id) as count_ticket ,SUM(Price) as sum_ticket \n" +
                 "FROM summarize t1\n" +
                 "INNER JOIN ticket t2 \n" +
-                "ON t1.ticket_id=t2.ticket_id\n";
+                "ON t1.ticket_id=t2.ticket_id\n" +
+                "WHERE t1.work_id = '"+value3+"' ";
         try {
             con = ConnectDb.connectDB();
             ResultSet rs = con.createStatement().executeQuery(sql);
@@ -136,7 +188,8 @@ public class concludeViewController {
         String sql = "SELECT COUNT(t1.ticket_id) as count_ticket ,SUM(Price) as sum_ticket \n" +
                 "FROM summarize t1\n" +
                 "INNER JOIN ticket t2 \n" +
-                "ON t1.ticket_id=t2.ticket_id\n";
+                "ON t1.ticket_id=t2.ticket_id\n" +
+                "WHERE t1.work_id = '"+value3+"'";
         try {
             con = ConnectDb.connectDB();
             ResultSet rs = con.createStatement().executeQuery(sql);
@@ -145,6 +198,20 @@ public class concludeViewController {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void backBtn(ActionEvent event) throws IOException {
+        Stage primaryStage = new Stage();
+        try{
+            ((Node)event.getSource()).getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            Pane root = (Pane)loader.load(this.getClass().getResource("../expressfxml/scheduleView.fxml").openStream());
+            Scene scene = new Scene(root);
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        }catch ( IOException var6){
+            var6.printStackTrace();
         }
     }
 
@@ -160,18 +227,5 @@ public class concludeViewController {
             e.printStackTrace();
         }
     }*/
-    public void ConfirmBtn(){
-        try{
-            con = ConnectDb.connectDB();
-            ResultSet rs = con.createStatement().executeQuery("SELECT emp_id,work_date from ");
-            while (rs.next()){
-
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-    }
-
 
 }

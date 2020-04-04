@@ -1,6 +1,7 @@
 package express.expressfxml.manager;
 
 import express.ConnectDb;
+import express.expressfxml.DetailCar;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -11,13 +12,16 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class SumarizeViewController {
     @FXML
@@ -25,19 +29,67 @@ public class SumarizeViewController {
     private Connection con = null;
     private ResultSet rs = null;
     private PreparedStatement pst = null;
-
+    private int nummax = 0;
     @FXML
     TableView tableViewSum;
-    @FXML
-    TableColumn<DetailSummary,String> tableColumnDate;
+    @FXML TableColumn<DetailSummary,String> tableColumnDate;
     @FXML TableColumn<DetailSummary,String> tableColumnId;
     @FXML TableColumn<DetailSummary,String> tableColumnDuty;
     @FXML TableColumn<DetailSummary,String> tableColumnBox;
-    @FXML TableColumn<DetailSummary,String> tableColumnFour;
-    @FXML TableColumn<DetailSummary,String> tableColumnSix;
-    @FXML TableColumn<DetailSummary,String> tableColumnTen;
-    @FXML TableColumn<DetailSummary,String> tableColumnSpecial;
-    @FXML TableColumn<DetailSummary,String> tableColumnSum;
+    @FXML TableColumn<DetailSummary,String> tableColumnSumVehicle;
+    @FXML TableColumn<DetailSummary,String> tableColumnSumPrice;
+
+
+    public void initialize() throws SQLException {
+        showTable();
+    }
+
+    public int getWorkID()throws SQLException{
+        try{
+            con = ConnectDb.connectDB();
+            String sql = "SELECT SELECT DISTINCT  work_id as maxworkid\n" +
+                    "FROM summarize";
+            ResultSet rs = con.createStatement().executeQuery(sql);
+            while (rs.next()){
+                nummax = rs.getInt("maxspace");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return nummax;
+    }
+
+
+    ObservableList<DetailSummary> observableList = FXCollections.observableArrayList();
+    public void showTable(){
+        try{
+            con = ConnectDb.connectDB();
+            String sql = "SELECT t3.work_date as date_n ,t1.emp_id as id , t3.work_box as box ,t3.work_duty as duty, COUNT(t1.ticket_id) as count_ticket ,SUM(Price) as sum_ticket\n" +
+                    "FROM summarize t1\n" +
+                    "INNER JOIN ticket t2\n" +
+                    "ON t1.ticket_id=t2.ticket_id\n" +
+                    "INNER JOIN work_schedule t3\n" +
+                    "ON t1.work_id= t3.work_id\n" +
+                    "WHERE t1.work_id IN (SELECT DISTINCT work_id FROM summarize)";
+            ResultSet rs = con.createStatement().executeQuery(sql);
+            while (rs.next()){
+                observableList.add(new DetailSummary(rs.getString("date_n"),rs.getString("id"),rs.getString("box"),rs.getString("duty"),rs.getString("count_ticket"),rs.getString("sum_ticket")));
+            }
+            System.out.println("SHOW CORRECT");
+        } catch (Exception e) {
+            System.out.println("SHOW FAIL");
+            e.printStackTrace();
+        }
+        tableColumnDate.setCellValueFactory(new PropertyValueFactory<>("date"));
+        tableColumnId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        tableColumnBox.setCellValueFactory(new PropertyValueFactory<>("box"));
+        tableColumnDuty.setCellValueFactory(new PropertyValueFactory<>("duty"));
+        tableColumnSumVehicle.setCellValueFactory(new PropertyValueFactory<>("sumVehicle"));
+        tableColumnSumPrice.setCellValueFactory(new PropertyValueFactory<>("sumPrice"));
+
+        tableViewSum.setItems(null);
+        tableViewSum.setItems(observableList);
+    }
 
     public  void backBtn(ActionEvent event) throws IOException {
         Stage primaryStage = new Stage();
@@ -50,37 +102,6 @@ public class SumarizeViewController {
             primaryStage.show();
         }catch ( IOException var6){
             var6.printStackTrace();
-        }
-    }
-    ObservableList<DetailSummary> observableList = FXCollections.observableArrayList();
-    public void showTableSum(){
-            String fourWheel ="SELECT COUNT(Type_ticket),SUM(Price)\n" +
-                    "FROM summarize t1\n" +
-                    "INNER JOIN ticket t2 \n" +
-                    "ON t1.ticket_id=t2.ticket_id\n" +
-                    "WHERE t2.Type_ticket ='4wheel'";
-            String sixWheel = "SELECT COUNT(Type_ticket),SUM(Price)\n" +
-                    "FROM summarize t1\n" +
-                    "INNER JOIN ticket t2 \n" +
-                    "ON t1.ticket_id=t2.ticket_id\n" +
-                    "WHERE t2.Type_ticket ='6wheel'";
-            String tenWheel = "SELECT COUNT(Type_ticket),SUM(Price)\n" +
-                    "FROM summarize t1\n" +
-                    "INNER JOIN ticket t2 \n" +
-                    "ON t1.ticket_id=t2.ticket_id\n" +
-                    "WHERE t2.Type_ticket ='10wheel'";
-        try {
-
-            con = ConnectDb.connectDB();
-            String sql = "";
-            pst = con.prepareStatement(sql);
-            pst.execute();
-            //observableList.add(new DetailSummary(rs.getString("work_date"),rs.getString("emp_id"),rs.getString("emp_duty")))
-
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 }

@@ -1,13 +1,6 @@
 package express.expressfxml;
 
 public class DetailNameView {
-  /*  public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }*/
 
     public String getDuty() {
         return duty;
@@ -33,10 +26,9 @@ public class DetailNameView {
         this.date = date;
     }
 
-    String name,duty,box,date;
+    String duty,box,date;
 
     public DetailNameView( String duty, String box, String date) {
-        //this.name = name;
         this.duty = duty;
         this.box = box;
         this.date = date;

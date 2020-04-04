@@ -42,19 +42,22 @@ public class WorkViewController {
 
 
     ObservableList<DetailCar> observableList = FXCollections.observableArrayList();
+    ObservableList<DetailCar> observableListTmp = FXCollections.observableArrayList();
 
     public void initialize() throws SQLException {
-        value1 = getSpaceID();
-        System.out.println(value3);
+        showTableViewDefault();
     }
 
-    public WorkViewController() throws SQLException {
+    public void showTableViewDefault() {
+        observableListTmp.add(new DetailCar("","","",""));
+        tableColID.setCellValueFactory(new PropertyValueFactory<>("countCar"));
+        tableColDate.setCellValueFactory(new PropertyValueFactory<>("date"));
+        tableColType.setCellValueFactory(new PropertyValueFactory<>("ticket"));
+        tableColPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
+        tableWork.setItems(null);
+        tableWork.setItems(observableListTmp);
     }
 
-//    public int getCountCar(){
-//        countCar++;
-//        return countCar;
-//    }
     public String getWorkID()throws SQLException{
         try{
             con = ConnectDb.connectDB();
@@ -113,11 +116,7 @@ public class WorkViewController {
             while (rs.next()){
                 countCar++;
                 observableList.add(new DetailCar(String.valueOf(countCar),rs.getString("date_n"),rs.getString("ticket"),rs.getString("price")));
-                System.out.println("-----------");
-                System.out.println(countCar);
-                System.out.println("-----------");
             }
-
             System.out.println("SHOW CORRECT");
         } catch (Exception e) {
             System.out.println("SHOW FAIL");

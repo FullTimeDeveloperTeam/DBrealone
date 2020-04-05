@@ -103,4 +103,22 @@ public class LoginManagerViewController extends Component {
             var6.printStackTrace();
         }
     }
+
+    public void actionPerformed (ActionEvent event){
+        JOptionPane optionPane = new JOptionPane ( );
+        optionPane.setMessageType ( JOptionPane.QUESTION_MESSAGE );
+        optionPane.setOptionType ( JOptionPane.YES_NO_OPTION );
+        optionPane.setMessage ( "Message of Popup" );
+        JDialog dialog = optionPane.createDialog ( null, "Title of PopUp" );
+        dialog.setVisible ( true );
+        Integer selectedButton = ( Integer ) optionPane.getValue ( );
+        JButton button = ( JButton ) event.getSource ( );
+        if ( selectedButton == JOptionPane.YES_OPTION ){
+            button.setText ( "You Click 'Yes'" );
+        }
+        else if ( selectedButton == JOptionPane.NO_OPTION ){
+            button.setText ( "You Click 'No'" );
+        }
+    }
+
 }

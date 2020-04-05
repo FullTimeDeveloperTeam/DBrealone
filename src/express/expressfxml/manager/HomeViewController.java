@@ -48,8 +48,8 @@ public class HomeViewController {
         JOptionPane optionPane = new JOptionPane ();
         optionPane.setMessageType ( JOptionPane.QUESTION_MESSAGE );
         optionPane.setOptionType ( JOptionPane.YES_NO_OPTION );
-        optionPane.setMessage ( "คุณต้องการ logout ใช่หรือไม่" );
-        JDialog dialog = optionPane.createDialog ( null, "logout" );
+        optionPane.setMessage ( "คุณต้องการ Logout ใช่หรือไม่" );
+        JDialog dialog = optionPane.createDialog ( null, "Logout" );
         dialog.setVisible ( true );
         Integer selectedButton = ( Integer ) optionPane.getValue ( );
         if ( selectedButton == JOptionPane.YES_OPTION ) {

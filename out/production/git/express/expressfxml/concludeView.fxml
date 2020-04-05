@@ -45,15 +45,15 @@
          <font>
             <Font size="18.0" />
          </font></Label>
-      <Label layoutX="563.0" layoutY="306.0" text="ใบ">
+      <Label layoutX="582.0" layoutY="306.0" text="ใบ">
          <font>
             <Font size="18.0" />
          </font></Label>
-      <Label layoutX="345.0" layoutY="306.0" text="บาท">
+      <Label layoutX="376.0" layoutY="306.0" text="บาท">
          <font>
             <Font size="18.0" />
          </font></Label>
-      <Label layoutX="404.0" layoutY="306.0" text="ตั๋วทั้งหมด">
+      <Label layoutX="430.0" layoutY="306.0" text="ตั๋วทั้งหมด">
          <font>
             <Font size="18.0" />
          </font></Label>
@@ -90,7 +90,7 @@
          <font>
             <Font size="18.0" />
          </font></Label>
-      <Label fx:id="ticketAll" layoutX="516.0" layoutY="306.0" text="La" textAlignment="RIGHT">
+      <Label fx:id="ticketAll" layoutX="535.0" layoutY="306.0" text="La" textAlignment="RIGHT">
          <font>
             <Font size="18.0" />
          </font></Label>

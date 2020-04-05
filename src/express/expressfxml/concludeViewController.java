@@ -9,16 +9,21 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import javax.swing.*;
+import java.awt.*;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class concludeViewController {
+public class concludeViewController extends Component {
     private Connection con = null;
     private ResultSet rs = null;
     private PreparedStatement pst = null;
@@ -75,8 +80,12 @@ public class concludeViewController {
             while (rs.next()){
                 value3 = rs.getString("work_id");
             }
+            if ( value3.isEmpty()){
+                JOptionPane.showMessageDialog(this,"ไม่พบข้อมูล","แจ้งเตือน",JOptionPane.INFORMATION_MESSAGE);
+            }
 
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(this,"ไม่พบข้อมูล","แจ้งเตือน",JOptionPane.INFORMATION_MESSAGE);
             e.printStackTrace();
         }
         return value3;

@@ -150,8 +150,12 @@ public class ScheduleViewController extends Component {
             while (rs.next()) {
                 observableList.add(new DetailNameView(rs.getString("work_duty"), rs.getString("work_box"), rs.getString("work_date")));
             }
+            if ( observableList.isEmpty()){
+                JOptionPane.showMessageDialog(this,"ไม่พบข้อมูล","แจ้งเตือน",JOptionPane.INFORMATION_MESSAGE);
+            }
             System.out.println("SHOW CORRECT");
         } catch (SQLException e) {
+                JOptionPane.showMessageDialog(this,"ไม่พบข้อมูล","แจ้งเตือน",JOptionPane.INFORMATION_MESSAGE);
             System.out.println("SHOW FAIL");
             e.printStackTrace();
         }

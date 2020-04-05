@@ -1,7 +1,12 @@
 package express.expressfxml.manager;
 
 public class DetailSummary {
-    String date,id,box,duty,sumVehicle,sumPrice;
+    String date;
+    String id;
+    String box;
+    String duty;
+    String sumVehicle;
+    String sumPrice;
 
     public DetailSummary(String date, String id, String box, String duty, String sumVehicle, String sumPrice) {
         this.date = date;

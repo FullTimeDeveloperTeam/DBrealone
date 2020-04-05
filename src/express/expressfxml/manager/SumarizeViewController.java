@@ -22,6 +22,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class SumarizeViewController {
@@ -30,13 +31,20 @@ public class SumarizeViewController {
     private Connection con = null;
     private ResultSet rs = null;
     private PreparedStatement pst = null;
-    @FXML TableView tableViewSum;
-    @FXML TableColumn<DetailSummary,String> tableColumnDate;
-    @FXML TableColumn<DetailSummary,String> tableColumnId;
-    @FXML TableColumn<DetailSummary,String> tableColumnDuty;
-    @FXML TableColumn<DetailSummary,String> tableColumnBox;
-    @FXML TableColumn<DetailSummary,String> tableColumnSumVehicle;
-    @FXML TableColumn<DetailSummary,String> tableColumnSumPrice;
+    @FXML
+    TableView tableViewSum;
+    @FXML
+    TableColumn<DetailSummary, String> tableColumnDate;
+    @FXML
+    TableColumn<DetailSummary, String> tableColumnId;
+    @FXML
+    TableColumn<DetailSummary, String> tableColumnDuty;
+    @FXML
+    TableColumn<DetailSummary, String> tableColumnBox;
+    @FXML
+    TableColumn<DetailSummary, String> tableColumnSumVehicle;
+    @FXML
+    TableColumn<DetailSummary, String> tableColumnSumPrice;
 
 
     ArrayList<String> workId = new ArrayList<String>();
@@ -46,13 +54,13 @@ public class SumarizeViewController {
         showTable();
     }
 
-    public void getWorkID()throws SQLException{
-        try{
+    public void getWorkID() throws SQLException {
+        try {
             con = ConnectDb.connectDB();
             String sql = "SELECT DISTINCT  work_id as workid\n" +
                     "FROM summarize";
             ResultSet rs = con.createStatement().executeQuery(sql);
-            while (rs.next()){
+            while (rs.next()) {
                 workId.add(rs.getString("workid"));
             }
         } catch (Exception e) {
@@ -67,9 +75,9 @@ public class SumarizeViewController {
 
     ObservableList<DetailSummary> observableList = FXCollections.observableArrayList();
 
-    public void showTable(){
-        for (String value : workId){
-            try{
+    public void showTable() {
+        for (String value : workId) {
+            try {
                 con = ConnectDb.connectDB();
                 String sql = "SELECT t3.work_date as date_n ,t1.emp_id as id , t3.work_box as box ,t3.work_duty as duty, COUNT(t1.ticket_id) as count_ticket ,SUM(Price) as sum_ticket\n" +
                         "FROM summarize t1\n" +
@@ -77,10 +85,14 @@ public class SumarizeViewController {
                         "ON t1.ticket_id=t2.ticket_id\n" +
                         "INNER JOIN work_schedule t3\n" +
                         "ON t1.work_id= t3.work_id\n" +
-                        "WHERE t1.work_id = '"+value+"'";
+                        "WHERE t1.work_id = '" + value + "'";
                 ResultSet rs = con.createStatement().executeQuery(sql);
-                while (rs.next()){
-                    observableList.add(new DetailSummary(rs.getString("date_n"),rs.getString("id"),rs.getString("box"),rs.getString("duty"),rs.getString("count_ticket"),rs.getString("sum_ticket")));
+                while (rs.next()) {
+                    String sum = rs.getString("sum_ticket");
+                    double amount = Double.parseDouble(sum);
+                    DecimalFormat formatter = new DecimalFormat("#,###.00");
+                    observableList.add(new DetailSummary(rs.getString("date_n"), rs.getString("id"), rs.getString("box"), rs.getString("duty"), rs.getString("count_ticket"), formatter.format(amount)));
+                    System.out.println(amount);
                 }
                 System.out.println("SHOW CORRECT");
             } catch (Exception e) {
@@ -100,16 +112,16 @@ public class SumarizeViewController {
 
     }
 
-    public  void backBtn(ActionEvent event) throws IOException {
+    public void backBtn(ActionEvent event) throws IOException {
         Stage primaryStage = new Stage();
-        try{
-            ((Node)event.getSource()).getScene().getWindow().hide();
+        try {
+            ((Node) event.getSource()).getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
-            Pane root = (Pane)loader.load(this.getClass().getResource("../manager/HomeView.fxml").openStream());
+            Pane root = (Pane) loader.load(this.getClass().getResource("../manager/HomeView.fxml").openStream());
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
             primaryStage.show();
-        }catch ( IOException var6){
+        } catch (IOException var6) {
             var6.printStackTrace();
         }
     }

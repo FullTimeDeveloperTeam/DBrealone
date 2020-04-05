@@ -185,7 +185,7 @@ public class WorkManaagerViewController extends Component {
         }else {
             String value1 = idCombo1.getValue().toString();
             try{
-                String sql = "DELETE employee,work_schedule FROM employee INNER JOIN work_schedule ON employee.emp_id = work_schedule.emp_id WHERE employee.emp_id= '"+value1+"'";
+                String sql = "DELETE employee FROM employee  WHERE emp_id= '"+value1+"'";
                 con = ConnectDb.connectDB();
                 pst =con.prepareStatement(sql);
                 pst.execute();
@@ -194,6 +194,7 @@ public class WorkManaagerViewController extends Component {
                 System.out.println("DELETE CORRECT");
             } catch (Exception e) {
                 e.printStackTrace();
+                JOptionPane.showMessageDialog(this, "โปรดลบงานของพนักงานก่อน", "บันทึก", 1);
                 System.out.println("DELETE FAIL");
             }
             idCombo.getItems().clear();

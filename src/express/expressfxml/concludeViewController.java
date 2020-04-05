@@ -22,6 +22,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 
 public class concludeViewController extends Component {
     private Connection con = null;
@@ -43,7 +44,8 @@ public class concludeViewController extends Component {
     String value1 = "";
     String value2 = "";
     String value3 = "";
-
+   /* double amount = Double.parseDouble();
+    DecimalFormat formatter = new DecimalFormat("#,###.00");*/
     public void initialize() throws SQLException{
         showLabelDefault();
     }
@@ -195,7 +197,11 @@ public class concludeViewController extends Component {
             con = ConnectDb.connectDB();
             ResultSet rs = con.createStatement().executeQuery(sql);
             while (rs.next()){
-                priceSum.setText(String.valueOf(rs.getInt("sum_ticket")));
+                //double amount = Double.parseDouble(priceSum.getText(rs.getString("sum_ticket")));
+                String sum = rs.getString("sum_ticket");
+                double amount = Double.parseDouble(sum);
+                DecimalFormat formatter = new DecimalFormat("#,###.00");
+                priceSum.setText(formatter.format(amount));
             }
         } catch (SQLException e) {
             e.printStackTrace();

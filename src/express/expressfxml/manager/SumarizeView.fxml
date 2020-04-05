@@ -9,12 +9,12 @@
    <children>
       <TableView fx:id="tableViewSum" layoutX="86.0" layoutY="90.0" prefHeight="252.0" prefWidth="626.0">
         <columns>
-            <TableColumn fx:id="tableColumnDate" prefWidth="110.4000244140625" text="วันที่" />
-          <TableColumn fx:id="tableColumnId" prefWidth="77.60003662109375" text="id" />
-            <TableColumn fx:id="tableColumnBox" prefWidth="75.0" text="ตู้" />
-            <TableColumn fx:id="tableColumnDuty" prefWidth="75.0" text="เวร" />
-            <TableColumn fx:id="tableColumnSumVehicle" prefWidth="130.39996337890625" text="รถทังหมด" />
-            <TableColumn fx:id="tableColumnSumPrice" minWidth="0.0" prefWidth="152.800048828125" text="เงินรวม" />
+            <TableColumn fx:id="tableColumnDate" prefWidth="110.4000244140625" text="DATE" />
+          <TableColumn fx:id="tableColumnId" prefWidth="77.60003662109375" text="ID" />
+            <TableColumn fx:id="tableColumnBox" prefWidth="75.0" text="BOX" />
+            <TableColumn fx:id="tableColumnDuty" prefWidth="75.0" text="DUTY" />
+            <TableColumn fx:id="tableColumnSumVehicle" prefWidth="130.39996337890625" text="ALL VEHICLE" />
+            <TableColumn fx:id="tableColumnSumPrice" minWidth="0.0" prefWidth="152.800048828125" text="TOTAL CASH" />
         </columns>
       </TableView>
       <Button fx:id="back" layoutX="14.0" layoutY="452.0" mnemonicParsing="false" onAction="#backBtn" prefHeight="34.0" prefWidth="55.0" text="back" />

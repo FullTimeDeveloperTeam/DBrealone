@@ -12,21 +12,21 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="express.expressfxml.WorkViewController">
    <children>
-      <Button fx:id="okBtn" layoutX="500.0" layoutY="426.0" mnemonicParsing="false" onAction="#oKBtn" prefHeight="35.0" prefWidth="54.0" text="ตกลง" />
+      <Button fx:id="okBtn" layoutX="470.0" layoutY="419.0" mnemonicParsing="false" onAction="#oKBtn" prefHeight="35.0" prefWidth="76.0" text="Confirm" />
       <Button fx:id="backBtn" layoutX="25.0" layoutY="533.0" mnemonicParsing="false" onAction="#backBtn" prefHeight="42.0" prefWidth="67.0" text="Back" />
-      <TableView fx:id="tableWork" layoutX="113.0" layoutY="53.0" prefHeight="294.0" prefWidth="400.0">
+      <TableView fx:id="tableWork" layoutX="92.0" layoutY="52.0" prefHeight="294.0" prefWidth="444.0">
         <columns>
             <TableColumn fx:id="tableColID" prefWidth="75.0" text="ID" />
-            <TableColumn fx:id="tableColDate" prefWidth="117.60000038146973" text="วันที่" />
-          <TableColumn fx:id="tableColType" prefWidth="114.4000244140625" text="ประเภทตั๋ว" />
-          <TableColumn fx:id="tableColPrice" prefWidth="89.60003662109375" text="ราคา" />
+            <TableColumn fx:id="tableColDate" prefWidth="117.60000038146973" text="DATE" />
+          <TableColumn fx:id="tableColType" prefWidth="164.0" text="TYPE OF TICKET" />
+          <TableColumn fx:id="tableColPrice" prefWidth="86.39996337890625" text="PRICE" />
         </columns>
       </TableView>
-      <Button fx:id="finish" layoutX="478.0" layoutY="533.0" mnemonicParsing="false" onAction="#confirmBtn" prefHeight="42.0" prefWidth="67.0" text="เสร็จสิ้น" />
-      <Button fx:id="fourWheel" layoutX="647.0" layoutY="143.0" mnemonicParsing="false" onAction="#insertFourCar" prefHeight="63.0" prefWidth="82.0" text="4 ล้อ" />
-      <Button fx:id="sixWheel" layoutX="646.0" layoutY="258.0" mnemonicParsing="false" onAction="#insertSixCar" prefHeight="63.0" prefWidth="82.0" text="6 ล้อ" />
-      <Button fx:id="tenWheel" layoutX="646.0" layoutY="374.0" mnemonicParsing="false" onAction="#insertTenCar" prefHeight="63.0" prefWidth="82.0" text="10ล้อ" />
-      <Button fx:id="specialWheel" layoutX="643.0" layoutY="524.0" mnemonicParsing="false" onAction="#insertSpecialCar" prefHeight="42.0" prefWidth="98.0" style="-fx-background-color: #ff4500;" text="กรณีพิเศษ" textFill="WHITE">
+      <Button fx:id="finish" layoutX="478.0" layoutY="533.0" mnemonicParsing="false" onAction="#confirmBtn" prefHeight="42.0" prefWidth="67.0" text="Finish" />
+      <Button fx:id="fourWheel" layoutX="647.0" layoutY="143.0" mnemonicParsing="false" onAction="#insertFourCar" prefHeight="63.0" prefWidth="82.0" text="4 WHEEL" />
+      <Button fx:id="sixWheel" layoutX="646.0" layoutY="258.0" mnemonicParsing="false" onAction="#insertSixCar" prefHeight="63.0" prefWidth="82.0" text="6 WHEEL" />
+      <Button fx:id="tenWheel" layoutX="637.0" layoutY="374.0" mnemonicParsing="false" onAction="#insertTenCar" prefHeight="63.0" prefWidth="98.0" text="10 WHEEL" />
+      <Button fx:id="specialWheel" layoutX="639.0" layoutY="523.0" mnemonicParsing="false" onAction="#insertSpecialCar" prefHeight="42.0" prefWidth="98.0" style="-fx-background-color: #ff4500;" text="SPECIAL" textFill="WHITE">
          <font>
             <Font name="Arial Bold" size="13.0" />
          </font></Button>

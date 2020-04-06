@@ -118,7 +118,7 @@ public class WorkManaagerViewController extends Component {
     public void insertEmpBtn(ActionEvent event) throws SQLException {
         Boolean id = isNummeric(idText.getText());
         Boolean num =isNummeric(phoneText.getText());
-        if (!(num) || !(id) || idText.getText().isEmpty() || nameText.getText().isEmpty() || phoneText.getText().isEmpty()){
+        if ( idText.getText().isEmpty() || nameText.getText().isEmpty() || phoneText.getText().isEmpty()){
             alert();
         }else {
             try{

@@ -131,7 +131,7 @@ public class WorkViewController extends Component {
                 observableList.add(new DetailCar(String.valueOf(countCar),rs.getString("date_n"),rs.getString("ticket"),rs.getString("price")));
             }
             if ( observableList.isEmpty()){
-                JOptionPane.showMessageDialog(this,"ไม่พบข้อมูล","แจ้งเตือน",JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this,"เริ่มการทำงาน","แจ้งเตือน",JOptionPane.INFORMATION_MESSAGE);
             }
             System.out.println("SHOW CORRECT");
         } catch (Exception e) {
